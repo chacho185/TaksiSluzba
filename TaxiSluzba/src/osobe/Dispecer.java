@@ -1,5 +1,6 @@
 package osobe;
 
+import enumeracija.Pol;
 import enumeracija.TelOdeljenja;
 
 public class Dispecer extends Korisnik {
@@ -9,19 +10,19 @@ public class Dispecer extends Korisnik {
 	private TelOdeljenja telOdeljenja;
 	
 	public Dispecer() {
+		super();
 		this.plata = 0;
 		this.brTelLinije = "";
 		this.telOdeljenja = null;
 	}
 
-	public Dispecer(double plata, String brTelLinije, TelOdeljenja telOdeljenja) {
-		super();
+	public Dispecer(int id, String korIme, String lozinka, String ime, String prezime, String jMBG, String adresa,
+			Pol pol, String brTel, double plata, String brTelLinije, TelOdeljenja telOdeljenja) {
+		super(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel);
 		this.plata = plata;
 		this.brTelLinije = brTelLinije;
 		this.telOdeljenja = telOdeljenja;
 	}
-	
-	
 
 	public double getPlata() {
 		return plata;
@@ -49,11 +50,9 @@ public class Dispecer extends Korisnik {
 
 	@Override
 	public String toString() {
-		return "Dispecer [plata=" + plata + ", brTelLinije=" + brTelLinije + ", telOdeljenja=" + telOdeljenja + ", id="
-				+ id + ", korIme=" + korIme + ", lozinka=" + lozinka + ", ime=" + ime + ", prezime=" + prezime
-				+ ", JMBG=" + JMBG + ", adresa=" + adresa + ", pol=" + pol + ", brTel=" + brTel + "]";
+		return "Dispecer [id=" + id + ", korIme=" + korIme + ", lozinka=" + lozinka + ", ime=" + ime + ", prezime=" + prezime
+				+ ", jMBG=" + jMBG + ", adresa=" + adresa + ", pol=" + pol + ", brTel=" + brTel
+				+ ", plata=" + plata + ", brTelLinije=" + brTelLinije + ", telOdeljenja=" + telOdeljenja + "]";
 	}
 	
-	
-
 }

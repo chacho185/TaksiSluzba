@@ -9,7 +9,7 @@ public abstract class Korisnik {
 	protected String lozinka;
 	protected String ime;
 	protected String prezime;
-	protected String JMBG;
+	protected String jMBG;
 	protected String adresa;
 	protected Pol pol;
 	protected String brTel;
@@ -21,7 +21,7 @@ public abstract class Korisnik {
 		this.lozinka = "";
 		this.ime = "";
 		this.prezime = "";
-		this.JMBG = "";
+		this.jMBG = "";
 		this.adresa = "";
 		this.pol = null;
 		this.brTel = "";
@@ -35,7 +35,7 @@ public abstract class Korisnik {
 		this.lozinka = lozinka;
 		this.ime = ime;
 		this.prezime = prezime;
-		JMBG = jMBG;
+		this.jMBG = jMBG;
 		this.adresa = adresa;
 		this.pol = pol;
 		this.brTel = brTel;
@@ -81,12 +81,12 @@ public abstract class Korisnik {
 		this.prezime = prezime;
 	}
 
-	public String getJMBG() {
-		return JMBG;
+	public String getjMBG() {
+		return jMBG;
 	}
 
-	public void setJMBG(String jMBG) {
-		JMBG = jMBG;
+	public void setjMBG(String jMBG) {
+		this.jMBG = jMBG;
 	}
 
 	public String getAdresa() {
@@ -112,6 +112,15 @@ public abstract class Korisnik {
 	public void setBrTel(String brTel) {
 		this.brTel = brTel;
 	}
+
+	@Override
+	public String toString() {
+		return "Korisnik [id=" + id + ", korIme=" + korIme + ", lozinka=" + lozinka + ", ime=" + ime + ", prezime="
+				+ prezime + ", jMBG=" + jMBG + ", adresa=" + adresa + ", pol=" + pol + ", brTel=" + brTel + "]";
+	}
+	
+	
+	
 	
 	
 	

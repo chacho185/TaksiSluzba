@@ -2,6 +2,7 @@ package enumeracija;
 
 public enum Pol {
 	
-	MUSKI,ZENSKI
+	MUSKI,
+	ZENSKI
 
 }
