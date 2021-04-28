@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import enumeracija.ModelAutomobila;
 import enumeracija.Pol;
 import enumeracija.Proizvodjac;
+import enumeracija.TelOdeljenja;
 import enumeracija.VrstaVozila;
 import osobe.Dispecer;
 import osobe.Musterija;
@@ -30,6 +31,14 @@ public class KolekcijeTest {
 		musterije.add(testMusterija2);
 		rsd.upisiMusterije(musterije);
 		System.out.println(testMusterija);
+		
+		ArrayList<Dispecer> dispeceri = new ArrayList<Dispecer>();
+		System.out.println("Dodavanje dispecera");
+		Dispecer testDispecer = new Dispecer(3,"Njego123","jego222", "Njegos", "Sikimic", "123333" , "Kneza Miroslava" , Pol.MUSKI , "321567" , 100000.0 , "321312" , TelOdeljenja.ODELJENJE_ZA_PRIJEM_VOZNJI );
+		dispeceri.add(testDispecer);
+		rsd.upisiDispecere(dispeceri);
+		System.out.println(testDispecer);
+		
 		
 		ArrayList<Dispecer> ucitaniDispeceri = RadSaDatotekama.ucitajDispecere();
 		

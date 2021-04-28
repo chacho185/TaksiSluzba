@@ -44,6 +44,7 @@ public class RadSaDatotekama {
 						String brTel = lineSplit[8];
 						double plata = Double.parseDouble(lineSplit[9]);
 						String brTelLinije = lineSplit[10];
+						
 						TelOdeljenja telOdeljenja = TelOdeljenja.values()[Integer.parseInt(lineSplit[11])];
 						Dispecer dispecer = new Dispecer(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel, plata, brTelLinije, telOdeljenja);
 						dispeceri.add(dispecer);
@@ -187,6 +188,37 @@ public class RadSaDatotekama {
 		
 		return automobil;
 	}
+	
+	
+	
+	public ArrayList<Dispecer> upisiDispecere(ArrayList<Dispecer> dispeceri) {
+			
+			
+			File file = new File("src/txt/dispeceri.txt");
+			
+			try {
+				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+				String sadrzaj = "";
+				for (Dispecer dispecer : dispeceri) {
+					sadrzaj += dispecer.getId() + "|" + dispecer.getKorIme() + "|" + dispecer.getLozinka() + "|" 
+							+ dispecer.getIme() + "|" + dispecer.getPrezime() + "|"
+							+ dispecer.getjMBG() + "|" + dispecer.getAdresa() + "|" 
+							+ dispecer.getPol().ordinal() + "|" + dispecer.getBrTel() + "|" + dispecer.getPlata() + "|" +
+							dispecer.getBrTelLinije() + "|" + dispecer.getTelOdeljenja().ordinal() + "\n";	
+				}
+				
+				writer.write(sadrzaj);
+				writer.close();
+			} catch (Exception e) {
+				System.out.println("Greska prilikom upisa dispecera u fajl.");
+			}
+			
+			return dispeceri;
+		}
+	
+	
+	
+	
 						
 						
 	
@@ -215,6 +247,7 @@ public class RadSaDatotekama {
 			
 			return musterije;
 		}
+	
 	
 	
 	
