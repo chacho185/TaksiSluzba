@@ -14,6 +14,7 @@ import radSaFajlovima.RadSaDatotekama;
 import taxiSluzba.Automobil;
 
 public class KolekcijeTest {
+	
 
 	public static void main(String[] args) {
 		RadSaDatotekama rsd = new RadSaDatotekama();
