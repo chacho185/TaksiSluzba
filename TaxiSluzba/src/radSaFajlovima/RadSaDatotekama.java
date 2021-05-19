@@ -11,17 +11,24 @@ import java.util.ArrayList;
 
 import enumeracija.ModelAutomobila;
 import enumeracija.Pol;
+import enumeracija.PorucivanjeVoznje;
 import enumeracija.Proizvodjac;
+import enumeracija.StatusVoznje;
 import enumeracija.TelOdeljenja;
 import enumeracija.VrstaVozila;
 import osobe.Dispecer;
 import osobe.Musterija;
 import osobe.Vozac;
 import taxiSluzba.Automobil;
+import taxiSluzba.Voznja;
 
 public class RadSaDatotekama {
 	
-	private static ArrayList<Automobil> automobil = new ArrayList<Automobil>();
+	private static ArrayList<Automobil> automobili = new ArrayList<Automobil>();
+	public static ArrayList<Musterija> musterije = new ArrayList<Musterija>();
+
+	public static ArrayList<Vozac> vozaci = new ArrayList<Vozac>();
+	public static ArrayList<Voznja> voznje = new ArrayList<Voznja>();
 	
 	public static ArrayList<Dispecer> ucitajDispecere() {
 		 ArrayList<Dispecer> dispeceri = new ArrayList<Dispecer>();
@@ -59,7 +66,7 @@ public class RadSaDatotekama {
 			}
 	
 	public static ArrayList<Musterija> ucitajMusterije() {
-		ArrayList<Musterija> musterije = new ArrayList<Musterija>();
+		
 				
 				try {
 					
@@ -90,7 +97,7 @@ public class RadSaDatotekama {
 	}
 	
 	public static ArrayList<Vozac> ucitajVozace() {
-		ArrayList<Vozac> vozaci = new ArrayList<Vozac>();
+		
 				
 				try {
 					
@@ -126,7 +133,7 @@ public class RadSaDatotekama {
 	}
 	
 	public static Automobil nadjiAutomobil(int id) {
-        for(Automobil automobil: automobil) {
+        for(Automobil automobil: automobili) {
             if(automobil.getId() == id) {
                 return automobil;
             }
@@ -155,7 +162,7 @@ public class RadSaDatotekama {
 						String vrstaVozilaString = lineSplit[5];
 						VrstaVozila vrsta = VrstaVozila.valueOf(vrstaVozilaString);
 						Automobil a = new Automobil(id, model, proizvodjac, godinaProizvodnje, brRegOznake, vrsta);
-						automobil.add(a);
+						automobili.add(a);
 				
 					
 					}
@@ -165,7 +172,7 @@ public class RadSaDatotekama {
 					System.out.println("Greska prilikom citanja musterija");
 				}
 				
-				return automobil;
+				return automobili;
 	}
 	public ArrayList<Automobil> upisiAutomobile(ArrayList<Automobil> automobili) {
 		
@@ -186,7 +193,7 @@ public class RadSaDatotekama {
 			System.out.println("Greska prilikom upisa automobila u fajl.");
 		}
 		
-		return automobil;
+		return automobili;
 	}
 	
 	
@@ -247,6 +254,86 @@ public class RadSaDatotekama {
 			
 			return musterije;
 		}
+	public ArrayList<Voznja> upisiVoznje(ArrayList<Voznja> voznje) {
+		
+		
+		File file = new File("src/txt/voznje.txt");
+		
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+			String sadrzaj = "";
+			for (Voznja voznja : voznje) {
+				sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" + voznja.getVremePorudzbine() + "|" 
+						+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|" + voznja.getMusterija().getId() + "|" 
+						+ voznja.getVozac().getId() + "|" + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" 
+						+ voznja.getStatus() + "|" + voznja.getPorucivanjeVoznje() + "\n";
+				
+			}
+			
+			writer.write(sadrzaj);
+			writer.close();
+		} catch (Exception e) {
+			System.out.println("Greska prilikom upisa voznji u fajl.");
+		}
+		
+		return voznje;
+	}
+	public static ArrayList<Voznja> ucitajVoznje() {
+		
+				
+				try {
+					
+					File file = new File("src/txt/voznje.txt");
+					BufferedReader reader = new BufferedReader(new FileReader(file));
+					String line;
+					while((line = reader.readLine()) !=null) {
+						String[] lineSplit = line.split("\\|");
+						int id = Integer.parseInt(lineSplit[0]);
+						String datum = lineSplit[1];
+						String vremePorudzbine = lineSplit[2];
+						String adresaPolaska = lineSplit[3];
+						String adresaDestinacije = lineSplit[4];
+						int musterijaint = Integer.parseInt(lineSplit[5]);
+						Musterija musterija = nadjiMusteriju(musterijaint);
+						int vozacint = Integer.parseInt(lineSplit[6]);
+						Vozac vozac = nadjiVozaca(vozacint);
+						
+						int brPredjenihKilometara = Integer.parseInt(lineSplit[7]);
+						int trajanjeVoznje = Integer.parseInt(lineSplit[8]);
+						String statusVoznje = lineSplit[9];
+						StatusVoznje status = StatusVoznje.valueOf(statusVoznje);
+						String porucivanjeVoznjestr = lineSplit[10];
+						PorucivanjeVoznje porucivanjeVoznje = PorucivanjeVoznje.valueOf(porucivanjeVoznjestr);
+						Voznja voznja = new Voznja(id, datum, vremePorudzbine, adresaPolaska, adresaDestinacije, musterija, vozac, brPredjenihKilometara, trajanjeVoznje, status, porucivanjeVoznje);
+						voznje.add(voznja);
+						
+					}
+					reader.close();
+					
+				} catch (IOException e) {
+					System.out.println("Greska prilikom citanja voznji");
+				}
+				
+				return voznje;
+	}
+	
+	public static Musterija nadjiMusteriju(int id) {
+        for(Musterija musterija: musterije) {
+            if(musterija.getId() == id) {
+                return musterija;
+            }
+        }
+        return null;
+    }
+	
+	public static Vozac nadjiVozaca(int id) {
+        for(Vozac vozac: vozaci) {
+            if(vozac.getId() == id) {
+                return vozac;
+            }
+        }
+        return null;
+    }
 	
 	
 	

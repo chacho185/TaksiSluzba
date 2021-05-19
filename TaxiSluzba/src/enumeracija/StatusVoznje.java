@@ -2,8 +2,12 @@ package enumeracija;
 
 public enum StatusVoznje {
 	
-	SLOBODAN,
-	ZAUZET
+	KREIRANA,
+	KREIRANA_NA_CEKANJU,
+	DODIJELJENA,
+	PRIHVACENA,
+	ZAVRSENA,
+	ODBIJENA
 	
 
 }

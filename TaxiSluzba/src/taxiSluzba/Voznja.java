@@ -1,5 +1,6 @@
 package taxiSluzba;
 
+import enumeracija.PorucivanjeVoznje;
 import enumeracija.StatusVoznje;
 import osobe.Musterija;
 import osobe.Vozac;
@@ -13,9 +14,10 @@ public class Voznja {
 	private String adresaDestinacije;
 	private Musterija musterija;
 	private Vozac vozac;
-	private String brojPredjenihKilometara;
-	private String trajanjeVoznje;
+	private int brojPredjenihKilometara;
+	private int trajanjeVoznje;
 	private StatusVoznje status;
+	private PorucivanjeVoznje porucivanjeVoznje;
 	
 	
 	
@@ -27,16 +29,17 @@ public class Voznja {
 		this.adresaDestinacije = "";
 		this.musterija = new Musterija();
 		this.vozac = new Vozac();
-		this.brojPredjenihKilometara = "";
-		this.trajanjeVoznje = "";
-		this.status = status.SLOBODAN;
+		this.brojPredjenihKilometara = 0;
+		this.trajanjeVoznje = 0;
+		this.status = status.KREIRANA;
+		this.porucivanjeVoznje = porucivanjeVoznje.APLIKACIJA;
 		
 	}
 
 
 	public Voznja(int id, String datum, String vremePorudzbine, String adresaPolaska, String adresaDestinacije,
-			Musterija musterija, Vozac vozac, String brojPredjenihKilometara, String trajanjeVoznje,
-			StatusVoznje status) {
+			Musterija musterija, Vozac vozac, int brojPredjenihKilometara, int trajanjeVoznje,
+			StatusVoznje status,PorucivanjeVoznje porucivanjeVoznje) {
 		super();
 		this.id = id;
 		this.datum = datum;
@@ -48,16 +51,34 @@ public class Voznja {
 		this.brojPredjenihKilometara = brojPredjenihKilometara;
 		this.trajanjeVoznje = trajanjeVoznje;
 		this.status = status;
+		this.porucivanjeVoznje = porucivanjeVoznje;
 		
 	}
 
+
+	
+
+
+	
 
 	@Override
 	public String toString() {
 		return "Voznja [id=" + id + ", datum=" + datum + ", vremePorudzbine=" + vremePorudzbine + ", adresaPolaska="
 				+ adresaPolaska + ", adresaDestinacije=" + adresaDestinacije + ", musterija=" + musterija + ", vozac="
 				+ vozac + ", brojPredjenihKilometara=" + brojPredjenihKilometara + ", trajanjeVoznje=" + trajanjeVoznje
-				+ ", status=" + status + ", obrisan=" +  "]";
+				+ ", status=" + status + ", porucivanjeVoznje=" + porucivanjeVoznje + "]";
+	}
+	
+	
+
+
+	public PorucivanjeVoznje getPorucivanjeVoznje() {
+		return porucivanjeVoznje;
+	}
+
+
+	public void setPorucivanjeVoznje(PorucivanjeVoznje porucivanjeVoznje) {
+		this.porucivanjeVoznje = porucivanjeVoznje;
 	}
 
 
@@ -131,22 +152,25 @@ public class Voznja {
 	}
 
 
-	public String getBrojPredjenihKilometara() {
+	
+
+
+	public int getBrojPredjenihKilometara() {
 		return brojPredjenihKilometara;
 	}
 
 
-	public void setBrojPredjenihKilometara(String brojPredjenihKilometara) {
+	public void setBrojPredjenihKilometara(int brojPredjenihKilometara) {
 		this.brojPredjenihKilometara = brojPredjenihKilometara;
 	}
 
 
-	public String getTrajanjeVoznje() {
+	public int getTrajanjeVoznje() {
 		return trajanjeVoznje;
 	}
 
 
-	public void setTrajanjeVoznje(String trajanjeVoznje) {
+	public void setTrajanjeVoznje(int trajanjeVoznje) {
 		this.trajanjeVoznje = trajanjeVoznje;
 	}
 
