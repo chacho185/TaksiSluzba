@@ -13,6 +13,7 @@ public abstract class Korisnik {
 	protected String adresa;
 	protected Pol pol;
 	protected String brTel;
+	protected boolean obrisan;
 	
 	public Korisnik() {
 		
@@ -25,10 +26,11 @@ public abstract class Korisnik {
 		this.adresa = "";
 		this.pol = null;
 		this.brTel = "";
+		this.obrisan = false;
 	}
 
 	public Korisnik(int id, String korIme, String lozinka, String ime, String prezime, String jMBG, String adresa,
-			Pol pol, String brTel) {
+			Pol pol, String brTel, boolean obrisan) {
 		super();
 		this.id = id;
 		this.korIme = korIme;
@@ -39,6 +41,7 @@ public abstract class Korisnik {
 		this.adresa = adresa;
 		this.pol = pol;
 		this.brTel = brTel;
+		this.obrisan = obrisan;
 	}
 
 	public int getId() {
@@ -112,11 +115,20 @@ public abstract class Korisnik {
 	public void setBrTel(String brTel) {
 		this.brTel = brTel;
 	}
+	
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
+	}
 
 	@Override
 	public String toString() {
 		return "Korisnik [id=" + id + ", korIme=" + korIme + ", lozinka=" + lozinka + ", ime=" + ime + ", prezime="
-				+ prezime + ", jMBG=" + jMBG + ", adresa=" + adresa + ", pol=" + pol + ", brTel=" + brTel + "]";
+				+ prezime + ", jMBG=" + jMBG + ", adresa=" + adresa + ", pol=" + pol + ", brTel=" + brTel + ", obrisan=" 
+				+ obrisan + "]";
 	}
 	
 	

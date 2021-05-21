@@ -1,2 +1,2 @@
-2|Mare|mare123|Marko|Markovic|15210521152|Alekse Santica 5|0|065424141
-3|Mare|ranko123|Ranko|Markovic|15210521152|Alekse Santica 5|0|065424141
+2|Mare|mare123|Marko|Markovic|15210521152|Alekse Santica 5|0|065424141|false
+3|Mare|ranko123|Ranko|Markovic|15210521152|Alekse Santica 5|0|065424141|false

@@ -34,9 +34,8 @@ public class KolekcijeTest {
 		
 		ArrayList<Musterija> musterije = new ArrayList<Musterija>();
 		System.out.println("Dodavanje musterije: ");
-		Musterija testMusterija = new Musterija(2, "Mare", "mare123", "Marko", "Markovic", "15210521152", "Alekse Santica 5", Pol.MUSKI, "065424141");
-		
-		Musterija testMusterija2 = new Musterija(3, "Mare", "ranko123", "Ranko", "Markovic", "15210521152", "Alekse Santica 5", Pol.MUSKI, "065424141");
+		Musterija testMusterija = new Musterija(2, "Mare", "mare123", "Marko", "Markovic", "15210521152", "Alekse Santica 5", Pol.MUSKI, "065424141" , false);
+		Musterija testMusterija2 = new Musterija(3, "Mare", "ranko123", "Ranko", "Markovic", "15210521152", "Alekse Santica 5", Pol.MUSKI, "065424141" , false);
 		musterije.add(testMusterija);
 		musterije.add(testMusterija2);
 		rsd.upisiMusterije(musterije);
@@ -47,7 +46,7 @@ public class KolekcijeTest {
 		
 		ArrayList<Dispecer> dispeceri = new ArrayList<Dispecer>();
 		System.out.println("Dodavanje dispecera");
-		Dispecer testDispecer = new Dispecer(3,"Njego123","jego222", "Njegos", "Sikimic", "123333" , "Kneza Miroslava" , Pol.MUSKI , "321567" , 100000.0 , "321312" , TelOdeljenja.ODELJENJE_ZA_PRIJEM_VOZNJI );
+		Dispecer testDispecer = new Dispecer(3,"Njego123","jego222", "Njegos", "Sikimic", "123333" , "Kneza Miroslava" , Pol.MUSKI , "321567" , 100000.0 , "321312" , TelOdeljenja.ODELJENJE_ZA_PRIJEM_VOZNJI,false );
 		dispeceri.add(testDispecer);
 		rsd.upisiDispecere(dispeceri);
 		System.out.println(testDispecer);
@@ -69,8 +68,8 @@ public class KolekcijeTest {
 		System.out.println("Ucitane musterije");
 		for (Musterija musterija : ucitaneMusterije) {
 			
-			System.out.println(RadSaDatotekama.musterije + "musterije u rsd");
-			System.out.println(musterija);
+			System.out.println(RadSaDatotekama.musterije);
+			//System.out.println(musterija);
 			
 		}
 		

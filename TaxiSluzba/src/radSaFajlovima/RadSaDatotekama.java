@@ -52,10 +52,10 @@ public class RadSaDatotekama {
 						Pol pol = Pol.values()[Integer.parseInt(lineSplit[7])];
 						String brTel = lineSplit[8];
 						double plata = Double.parseDouble(lineSplit[9]);
-						String brTelLinije = lineSplit[10];
-						
+						String brTelLinije = lineSplit[10];	
 						TelOdeljenja telOdeljenja = TelOdeljenja.values()[Integer.parseInt(lineSplit[11])];
-						Dispecer dispecer = new Dispecer(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel, plata, brTelLinije, telOdeljenja);
+						Boolean obrisan = Boolean.parseBoolean(lineSplit[12]);
+						Dispecer dispecer = new Dispecer(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel, plata, brTelLinije, telOdeljenja,obrisan);
 						dispeceri.add(dispecer);
 						
 					}
@@ -68,8 +68,7 @@ public class RadSaDatotekama {
 			}
 	
 	public static ArrayList<Musterija> ucitajMusterije() {
-		
-				
+	
 				try {
 					
 					File file = new File("src/txt/musterije.txt");
@@ -86,7 +85,8 @@ public class RadSaDatotekama {
 						String adresa = lineSplit[6];
 						Pol pol = Pol.values()[Integer.parseInt(lineSplit[7])];
 						String brTel = lineSplit[8];
-						Musterija musterija = new Musterija(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel);
+						Boolean obrisan = Boolean.parseBoolean(lineSplit[9]);
+						Musterija musterija = new Musterija(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel , obrisan); 
 						musterije.add(musterija);
 					}
 					reader.close();
@@ -213,7 +213,7 @@ public class RadSaDatotekama {
 							+ dispecer.getIme() + "|" + dispecer.getPrezime() + "|"
 							+ dispecer.getjMBG() + "|" + dispecer.getAdresa() + "|" 
 							+ dispecer.getPol().ordinal() + "|" + dispecer.getBrTel() + "|" + dispecer.getPlata() + "|" +
-							dispecer.getBrTelLinije() + "|" + dispecer.getTelOdeljenja().ordinal() + "\n";	
+							dispecer.getBrTelLinije() + "|" + dispecer.getTelOdeljenja().ordinal() + "|" + dispecer.isObrisan() + "\n";	
 				}
 				
 				writer.write(sadrzaj);
@@ -245,7 +245,7 @@ public class RadSaDatotekama {
 					sadrzaj += musterija.getId() + "|" + musterija.getKorIme() + "|" + musterija.getLozinka() + "|" 
 							+ musterija.getIme() + "|" + musterija.getPrezime() + "|"
 							+ musterija.getjMBG() + "|" + musterija.getAdresa() + "|" 
-							+ musterija.getPol().ordinal() + "|" + musterija.getBrTel() + "\n";	
+							+ musterija.getPol().ordinal() + "|" + musterija.getBrTel() + "|" + musterija.isObrisan() + "\n";	
 				}
 				
 				writer.write(sadrzaj);
@@ -336,6 +336,30 @@ public class RadSaDatotekama {
         }
         return null;
     }
+	
+public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
+		
+		try {
+			File file = new File("src/files/vozaci.txt");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+			String sadrzaj = "";
+			for (Vozac vozac : vozaci) {
+				sadrzaj += vozac.getId() + "|" + vozac.getKorIme() + "|" + vozac.getLozinka() + "|" 
+						+ vozac.getIme() + "|" + vozac.getPrezime() + "|"
+						+ vozac.getjMBG() + "|" + vozac.getAdresa() + "|" 
+						+ vozac.getPol().ordinal() + "|" + vozac.getBrTel() + "|" + vozac.getPlata() + "|" 
+						+ vozac.getBrojClanskeKarte() + "|" + String.valueOf(vozac.getAutomobil().getId()) + "|"
+						+ vozac.isObrisan() + "\n";
+			}
+			
+			writer.write(sadrzaj);
+			writer.close();
+		} catch (Exception e) {
+			System.out.println("Greska prilikom upisa vozaca u fajl.");
+		}
+		
+		return vozaci;
+	}
 	
 //	public Musterija login(String korisnickoIme, String lozinka) {
 //		for (Musterija musterija : musterije) {
