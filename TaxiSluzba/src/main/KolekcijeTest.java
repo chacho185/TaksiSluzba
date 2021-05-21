@@ -9,6 +9,7 @@ import enumeracija.Proizvodjac;
 import enumeracija.StatusVoznje;
 import enumeracija.TelOdeljenja;
 import enumeracija.VrstaVozila;
+import gui.LoginProzor;
 import osobe.Dispecer;
 import osobe.Musterija;
 import osobe.Vozac;
@@ -20,9 +21,10 @@ public class KolekcijeTest {
 	
 
 	public static void main(String[] args) {
+		
 		RadSaDatotekama rsd = new RadSaDatotekama();
 		ArrayList<Automobil> aa = new ArrayList<Automobil>();
-System.out.println("Dodavanjw automobila");
+		System.out.println("Dodavanjw automobila");
 		Automobil automobil = new Automobil(1, ModelAutomobila.GOLF4, Proizvodjac.VOLKSWAGEN, "2004", "12-12", VrstaVozila.PUTNICKI_AUTOMOBIL);
 		aa.add(automobil);
 		rsd.upisiAutomobile(aa);
@@ -67,7 +69,7 @@ System.out.println("Dodavanjw automobila");
 		System.out.println("Ucitane musterije");
 		for (Musterija musterija : ucitaneMusterije) {
 			
-			System.out.println(rsd.musterije + "musterije u rsd");
+			System.out.println(RadSaDatotekama.musterije + "musterije u rsd");
 			System.out.println(musterija);
 			
 		}
@@ -97,14 +99,14 @@ System.out.println("Dodavanjw automobila");
 
 		System.out.println("Dodavanje vozaca");
 		Vozac vozac = new Vozac(1, "caco", "truck", "cacoo", "sike", "jmbg", "adresa", Pol.MUSKI, "tel", 1520.00, "clanska karta", automobil, false);
-		rsd.vozaci.add(vozac);
+		RadSaDatotekama.vozaci.add(vozac);
 		//rsd.upisiVozace(rsd.vozaci);
 		System.out.println(vozac);
 		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
 
 		System.out.println("Dodavanje voznje");
 		Voznja voznnja = new Voznja(1, "datum", "vrijeme", "adresa", "destinacija", testMusterija, vozac, 155000, 150, StatusVoznje.KREIRANA, PorucivanjeVoznje.TELEFON);
-		rsd.voznje.add(voznnja);
+		RadSaDatotekama.voznje.add(voznnja);
 		rsd.upisiVoznje(rsd.voznje);
 		System.out.println(voznnja);
 		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -114,7 +116,13 @@ System.out.println("Dodavanjw automobila");
 		for (Voznja voznja : rsd.voznje) {
 			System.out.println(voznja);
 		}
+		
+		LoginProzor lp = new LoginProzor(rsd);
+		lp.setVisible(true);
 	}
+	
+	
+	
 	
 	
 	

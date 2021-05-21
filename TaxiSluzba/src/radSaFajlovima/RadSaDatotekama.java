@@ -16,6 +16,7 @@ import enumeracija.Proizvodjac;
 import enumeracija.StatusVoznje;
 import enumeracija.TelOdeljenja;
 import enumeracija.VrstaVozila;
+import net.miginfocom.swing.MigLayout;
 import osobe.Dispecer;
 import osobe.Musterija;
 import osobe.Vozac;
@@ -24,14 +25,15 @@ import taxiSluzba.Voznja;
 
 public class RadSaDatotekama {
 	
-	private static ArrayList<Automobil> automobili = new ArrayList<Automobil>();
+	public static ArrayList<Dispecer> dispeceri = new ArrayList<Dispecer>();
+	public static ArrayList<Automobil> automobili = new ArrayList<Automobil>();
 	public static ArrayList<Musterija> musterije = new ArrayList<Musterija>();
 
 	public static ArrayList<Vozac> vozaci = new ArrayList<Vozac>();
 	public static ArrayList<Voznja> voznje = new ArrayList<Voznja>();
 	
 	public static ArrayList<Dispecer> ucitajDispecere() {
-		 ArrayList<Dispecer> dispeceri = new ArrayList<Dispecer>();
+		
 		
 		
 				try {
@@ -334,6 +336,16 @@ public class RadSaDatotekama {
         }
         return null;
     }
+	
+//	public Musterija login(String korisnickoIme, String lozinka) {
+//		for (Musterija musterija : musterije) {
+//			if(musterija.getKorIme().equalsIgnoreCase(korisnickoIme) && 
+//					musterija.getLozinka().equals(lozinka) && !musterija.isObrisan()) {
+//				return musterija;
+//			}
+//		}
+//		return null;
+//	}
 	
 	
 	
