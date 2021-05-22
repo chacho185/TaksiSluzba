@@ -18,6 +18,7 @@ import enumeracija.TelOdeljenja;
 import enumeracija.VrstaVozila;
 import net.miginfocom.swing.MigLayout;
 import osobe.Dispecer;
+import osobe.Korisnik;
 import osobe.Musterija;
 import osobe.Vozac;
 import taxiSluzba.Automobil;
@@ -31,6 +32,7 @@ public class RadSaDatotekama {
 
 	public static ArrayList<Vozac> vozaci = new ArrayList<Vozac>();
 	public static ArrayList<Voznja> voznje = new ArrayList<Voznja>();
+	public static ArrayList<Korisnik> korisnici = new ArrayList<Korisnik>();
 	
 	public static ArrayList<Dispecer> ucitajDispecere() {
 		
@@ -57,7 +59,7 @@ public class RadSaDatotekama {
 						Boolean obrisan = Boolean.parseBoolean(lineSplit[12]);
 						Dispecer dispecer = new Dispecer(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel, plata, brTelLinije, telOdeljenja,obrisan);
 						dispeceri.add(dispecer);
-						
+						korisnici.add(dispecer);
 					}
 					reader.close();	
 				} catch (IOException e) {
@@ -88,6 +90,7 @@ public class RadSaDatotekama {
 						Boolean obrisan = Boolean.parseBoolean(lineSplit[9]);
 						Musterija musterija = new Musterija(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel , obrisan); 
 						musterije.add(musterija);
+						korisnici.add(musterija);
 					}
 					reader.close();
 					
@@ -124,6 +127,7 @@ public class RadSaDatotekama {
 						Boolean obrisan = Boolean.parseBoolean(lineSplit[12]);
 						Vozac vozac = new Vozac(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel, plata, brojClanskeKarte, automobil, obrisan);
 						vozaci.add(vozac);
+						korisnici.add(vozac);
 					}
 					reader.close();
 					
@@ -361,8 +365,8 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		return vozaci;
 	}
 	
-	public Musterija login(String korisnickoIme, String lozinka) {
-		for (Musterija musterija : musterije) {
+	public Korisnik login(String korisnickoIme, String lozinka) {
+		for (Korisnik musterija : korisnici) {
 			if(musterija.getKorIme().equalsIgnoreCase(korisnickoIme) && 
 					musterija.getLozinka().equals(lozinka) && !musterija.isObrisan()) {
 				return musterija;

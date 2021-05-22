@@ -12,7 +12,10 @@ import javax.swing.JTextField;
 
 import main.KolekcijeTest;
 import net.miginfocom.swing.MigLayout;
+import osobe.Dispecer;
+import osobe.Korisnik;
 import osobe.Musterija;
+import osobe.Vozac;
 import radSaFajlovima.RadSaDatotekama;
 
 public class LoginProzor extends JFrame {
@@ -83,20 +86,41 @@ public class LoginProzor extends JFrame {
 				if(korisnickoIme.equals("") || sifra.equals("")) {
 					JOptionPane.showMessageDialog(null, "Niste uneli sve podatke" , "Greska" , JOptionPane.WARNING_MESSAGE);
 				}else {
-					Musterija prijavljeni = radSaDatotekama.login(korisnickoIme, sifra);
+					Korisnik prijavljeni = radSaDatotekama.login(korisnickoIme, sifra);
 					if(prijavljeni == null) {
 						JOptionPane.showMessageDialog(null, "Pogresni login podaci", "Greska", JOptionPane.WARNING_MESSAGE);
-					}else {
-						LoginProzor.this.dispose();
-						LoginProzor.this.setVisible(false);
-						LoginProzorMusterija lpm = new LoginProzorMusterija(radSaDatotekama, prijavljeni);
-						lpm.setVisible(true);
+					}else  {
+						for (Musterija m: radSaDatotekama.musterije) {
+							if(m.getKorIme().equalsIgnoreCase(korisnickoIme) && m.getLozinka().equals(sifra)) {
+								LoginProzor.this.dispose();
+								LoginProzor.this.setVisible(false);
+								LoginProzorMusterija lpm = new LoginProzorMusterija(radSaDatotekama, m);
+								lpm.setVisible(true);
+							}
+						}
+						for (Dispecer d: radSaDatotekama.dispeceri) {
+							if(d.getKorIme().equalsIgnoreCase(korisnickoIme) && d.getLozinka().equals(sifra)) {
+								LoginProzor.this.dispose();
+								LoginProzor.this.setVisible(false);
+								LoginProzorDispecer lpd = new LoginProzorDispecer(radSaDatotekama, d);
+								lpd.setVisible(true);
+							}
+						}
+						for (Vozac v: radSaDatotekama.vozaci) {
+							if(v.getKorIme().equalsIgnoreCase(korisnickoIme) && v.getLozinka().equals(sifra)) {
+								LoginProzor.this.dispose();
+								LoginProzor.this.setVisible(false);
+								LoginProzorVozac lpd = new LoginProzorVozac(radSaDatotekama, v);
+								lpd.setVisible(true);
+							}
+						}
+						
 						
 					}
 				}
 				
 				
-				
+					
 					
 				
 			}
