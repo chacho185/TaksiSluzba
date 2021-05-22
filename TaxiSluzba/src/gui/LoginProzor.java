@@ -10,7 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import main.KolekcijeTest;
 import net.miginfocom.swing.MigLayout;
+import osobe.Musterija;
 import radSaFajlovima.RadSaDatotekama;
 
 public class LoginProzor extends JFrame {
@@ -81,8 +83,21 @@ public class LoginProzor extends JFrame {
 				if(korisnickoIme.equals("") || sifra.equals("")) {
 					JOptionPane.showMessageDialog(null, "Niste uneli sve podatke" , "Greska" , JOptionPane.WARNING_MESSAGE);
 				}else {
-					
+					Musterija prijavljeni = radSaDatotekama.login(korisnickoIme, sifra);
+					if(prijavljeni == null) {
+						JOptionPane.showMessageDialog(null, "Pogresni login podaci", "Greska", JOptionPane.WARNING_MESSAGE);
+					}else {
+						LoginProzor.this.dispose();
+						LoginProzor.this.setVisible(false);
+						LoginProzorMusterija lpm = new LoginProzorMusterija(radSaDatotekama, prijavljeni);
+						lpm.setVisible(true);
+						
+					}
 				}
+				
+				
+				
+					
 				
 			}
 		});

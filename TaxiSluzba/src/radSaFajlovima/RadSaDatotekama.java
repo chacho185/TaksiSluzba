@@ -128,7 +128,7 @@ public class RadSaDatotekama {
 					reader.close();
 					
 				} catch (IOException e) {
-					System.out.println("Greska prilikom citanja musterija");
+					System.out.println("Greska prilikom citanja vozaca");
 				}
 				
 				return vozaci;
@@ -361,15 +361,18 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		return vozaci;
 	}
 	
-//	public Musterija login(String korisnickoIme, String lozinka) {
-//		for (Musterija musterija : musterije) {
-//			if(musterija.getKorIme().equalsIgnoreCase(korisnickoIme) && 
-//					musterija.getLozinka().equals(lozinka) && !musterija.isObrisan()) {
-//				return musterija;
-//			}
-//		}
-//		return null;
-//	}
+	public Musterija login(String korisnickoIme, String lozinka) {
+		for (Musterija musterija : musterije) {
+			if(musterija.getKorIme().equalsIgnoreCase(korisnickoIme) && 
+					musterija.getLozinka().equals(lozinka) && !musterija.isObrisan()) {
+				return musterija;
+			}
+		}
+		return null;
+	}
+	
+	
+	
 	
 	
 	

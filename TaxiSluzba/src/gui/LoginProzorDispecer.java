@@ -5,10 +5,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import osobe.Musterija;
+import osobe.Dispecer;
 import radSaFajlovima.RadSaDatotekama;
 
-public class LoginProzorMusterija extends JFrame {
+public class LoginProzorDispecer extends JFrame {
 	
 	private JMenuBar mainMenu = new JMenuBar();
 	private JMenu rezervisiVoznju = new JMenu("Rezervisi voznju");
@@ -16,12 +16,12 @@ public class LoginProzorMusterija extends JFrame {
 	private JMenuItem putemMailaItem = new JMenuItem("Mailom");
 	
 	private RadSaDatotekama rsd;
-	private Musterija prijavljeniKorisnik;
+	private Dispecer prijavljeniKorisnik;
 	
-	public LoginProzorMusterija(RadSaDatotekama rsd, Musterija prijavljeniKorisnik) {
+	public LoginProzorDispecer(RadSaDatotekama rsd, Dispecer prijavljeniKorisnik) {
 		this.rsd = rsd;
 		this.prijavljeniKorisnik = prijavljeniKorisnik;
-		setTitle("Musterija: " + prijavljeniKorisnik.getKorIme());
+		setTitle("Dispecer: " + prijavljeniKorisnik.getKorIme());
 		setSize(500, 500);
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -38,8 +38,7 @@ public class LoginProzorMusterija extends JFrame {
 	}
 	
 	private void initActions() {
-		
-	}
-	
+			
+		}
 
 }
