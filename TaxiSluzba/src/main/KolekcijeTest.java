@@ -15,6 +15,7 @@ import osobe.Musterija;
 import osobe.Vozac;
 import radSaFajlovima.RadSaDatotekama;
 import taxiSluzba.Automobil;
+import taxiSluzba.TaksiSluzba;
 import taxiSluzba.Voznja;
 
 public class KolekcijeTest {
@@ -25,7 +26,7 @@ public class KolekcijeTest {
 		RadSaDatotekama rsd = new RadSaDatotekama();
 		rsd.ucitajMusterije();
 		rsd.ucitajDispecere();
-		//rsd.ucitajTaksiSluzbe();
+		rsd.ucitajTaksiSluzbe();
 		rsd.ucitajVozace();
 		rsd.ucitajVoznje();
 		rsd.ucitajAutomobile();
@@ -69,18 +70,17 @@ public class KolekcijeTest {
 //		}
 //		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
 //
-//		ArrayList<Musterija> ucitaneMusterije = RadSaDatotekama.ucitajMusterije();
+//		ArrayList<TaksiSluzba> ucitaneTaksiSluzbe = RadSaDatotekama.ucitajTaksiSluzbe();
 //		
-//		System.out.println("Ucitane musterije");
-//		for (Musterija musterija : ucitaneMusterije) {
+//		System.out.println("Ucitane taksi sluzbe");
+//		for (TaksiSluzba taksiSluzba : ucitaneTaksiSluzbe) {
 //			
-//			System.out.println(RadSaDatotekama.musterije);
-//			//System.out.println(musterija);
+//			System.out.println(taksiSluzba);
 //			
 //		}
 //		
 //		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
-//
+
 //		
 //		ArrayList<Automobil> ucitaniAutomobili = RadSaDatotekama.ucitajAutomobile();
 //		

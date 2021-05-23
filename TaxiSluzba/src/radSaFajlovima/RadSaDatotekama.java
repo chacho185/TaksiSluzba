@@ -22,6 +22,7 @@ import osobe.Korisnik;
 import osobe.Musterija;
 import osobe.Vozac;
 import taxiSluzba.Automobil;
+import taxiSluzba.TaksiSluzba;
 import taxiSluzba.Voznja;
 
 public class RadSaDatotekama {
@@ -29,10 +30,10 @@ public class RadSaDatotekama {
 	public static ArrayList<Dispecer> dispeceri = new ArrayList<Dispecer>();
 	public static ArrayList<Automobil> automobili = new ArrayList<Automobil>();
 	public static ArrayList<Musterija> musterije = new ArrayList<Musterija>();
-
 	public static ArrayList<Vozac> vozaci = new ArrayList<Vozac>();
 	public static ArrayList<Voznja> voznje = new ArrayList<Voznja>();
 	public static ArrayList<Korisnik> korisnici = new ArrayList<Korisnik>();
+	public static ArrayList<TaksiSluzba> taksiSluzbe = new ArrayList<TaksiSluzba>();
 	
 	public static ArrayList<Dispecer> ucitajDispecere() {
 		
@@ -364,15 +365,68 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		
 		return vozaci;
 	}
+
+		public static ArrayList<TaksiSluzba> ucitajTaksiSluzbe(){
+			
+			try {
+				File file = new File("src/txt/taksiSluzbe.txt");
+				BufferedReader reader = new BufferedReader(new FileReader(file));
+				String linija = null;
+				while((linija = reader.readLine()) != null) {
+					String[] lineSplit = linija.split("\\|");
+					int PIB = Integer.parseInt(lineSplit[0]);
+					String naziv = lineSplit[1];
+					String adresa = lineSplit[2];
+					Double cenaStartaVoznje = Double.parseDouble(lineSplit[3]);
+					Double cenaPoKilometru = Double.parseDouble(lineSplit[4]);
+					TaksiSluzba taksiSluzba = new TaksiSluzba(PIB, naziv, adresa, cenaStartaVoznje, cenaPoKilometru);
+					taksiSluzbe.add(taksiSluzba);
+				} 
+				reader.close();
+			} catch (IOException e) {
+				System.out.println("Greska prilikom citanja taksiSluzbe iz datoteke");
+			}
+			return taksiSluzbe;
+		}
+		
+		public ArrayList<TaksiSluzba>  upisiTaksiSluzbe (ArrayList<TaksiSluzba> taksiSluzbe) {
+			
+			try {
+				File file = new File("src/files/taksiSluzbe.txt");
+				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+				String sadrzaj = "";
+				for (TaksiSluzba taksiSluzba : taksiSluzbe) {
+					sadrzaj += taksiSluzba.getPIB() + "|" + taksiSluzba.getNaziv() + "|" + taksiSluzba.getAdresa() + "|" 
+							+ taksiSluzba.getCenaStartaVoznje() + "|" + taksiSluzba.getCenaPoKilometru() + "\n";
+				}
+				
+				writer.write(sadrzaj);
+				writer.close();
+			} catch (Exception e) {
+				System.out.println("Greska prilikom upisa taksiSluzbe u fajl.");
+			}
+			
+			return taksiSluzbe;
+		}
 	
 	public Korisnik login(String korisnickoIme, String lozinka) {
-		for (Korisnik musterija : korisnici) {
-			if(musterija.getKorIme().equalsIgnoreCase(korisnickoIme) && 
-					musterija.getLozinka().equals(lozinka) && !musterija.isObrisan()) {
-				return musterija;
+		for (Korisnik korisnik : korisnici) {
+			if(korisnik.getKorIme().equalsIgnoreCase(korisnickoIme) && 
+					korisnik.getLozinka().equals(lozinka) && !korisnik.isObrisan()) {
+				return korisnik;
 			}
 		}
 		return null;
+	}
+	
+	public ArrayList<Dispecer> sviNeobrisaniDispeceri() {
+		ArrayList<Dispecer> neobrisani = new ArrayList<Dispecer>();
+		for (Dispecer dispecer : dispeceri) {
+			if(!dispecer.isObrisan()) {
+				neobrisani.add(dispecer);
+			}
+		}
+		return neobrisani;
 	}
 	
 	
