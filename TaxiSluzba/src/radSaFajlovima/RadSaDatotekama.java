@@ -158,17 +158,14 @@ public class RadSaDatotekama {
 					String line;
 					while((line = reader.readLine()) !=null) {
 						String[] lineSplit = line.split("\\|");
-						int id = Integer.parseInt(lineSplit[0]);
-						String modelString = lineSplit[1];
-						ModelAutomobila model = ModelAutomobila.valueOf(modelString);
-						
-						String proizvodjacString = lineSplit[2];
-						Proizvodjac proizvodjac = Proizvodjac.valueOf(proizvodjacString);
+						int id = Integer.parseInt(lineSplit[0]);						
+						ModelAutomobila model = ModelAutomobila.values()[Integer.parseInt(lineSplit[1])];
+						Proizvodjac proizvodjac = Proizvodjac.values()[Integer.parseInt(lineSplit[2])];
 						String godinaProizvodnje = lineSplit[3];
 						String brRegOznake = lineSplit[4];
-						String vrstaVozilaString = lineSplit[5];
-						VrstaVozila vrsta = VrstaVozila.valueOf(vrstaVozilaString);
-						Automobil a = new Automobil(id, model, proizvodjac, godinaProizvodnje, brRegOznake, vrsta);
+						VrstaVozila vrsta = VrstaVozila.values()[Integer.parseInt(lineSplit[5])];
+						Boolean obrisan = Boolean.parseBoolean(lineSplit[6]);
+						Automobil a = new Automobil(id, model, proizvodjac, godinaProizvodnje, brRegOznake, vrsta, obrisan);
 						automobili.add(a);
 				
 					
@@ -190,8 +187,8 @@ public class RadSaDatotekama {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 			String sadrzaj = "";
 			for (Automobil automobil : automobili) {
-				sadrzaj += automobil.getId() + "|" + automobil.getModel() + "|" +automobil.getProizvodjac() + "|" + automobil.getGodinaProizvodnje()
-				+"|" + automobil.getBrRegOznake() + "|" + automobil.getVrstaVozila() + "\n";
+				sadrzaj += automobil.getId() + "|" + automobil.getModel().ordinal() + "|" + automobil.getProizvodjac().ordinal() + "|" + automobil.getGodinaProizvodnje()
+				+"|" + automobil.getBrRegOznake() + "|" + automobil.getVrstaVozila().ordinal() + "|" + automobil.isObrisan() + "\n";	
 			} 
 			
 			writer.write(sadrzaj);
@@ -341,6 +338,14 @@ public class RadSaDatotekama {
         }
         return null;
     }
+	public Dispecer NadjiDispeceraPoKorisnickomImenu(String korisnickoIme) {
+		for(Dispecer a : this.dispeceri) {
+			if (a.getKorIme() == korisnickoIme) {
+				return a;
+			}
+		}
+		return null;
+	}
 	
 public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		
@@ -424,6 +429,26 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		for (Dispecer dispecer : dispeceri) {
 			if(!dispecer.isObrisan()) {
 				neobrisani.add(dispecer);
+			}
+		}
+		return neobrisani;
+	}
+	
+	public ArrayList<Vozac> sviNeobrisaniVozaci() {
+		ArrayList<Vozac> neobrisani = new ArrayList<Vozac>();
+		for (Vozac vozac : vozaci) {
+			if(!vozac.isObrisan()) {
+				neobrisani.add(vozac);
+			}
+		}
+		return neobrisani;
+	}
+	
+	public ArrayList<Automobil> sviNeobrisaniAutomobili() {
+		ArrayList<Automobil> neobrisani = new ArrayList<Automobil>();
+		for (Automobil automobil : automobili) {
+			if(!automobil.isObrisan()) {
+				neobrisani.add(automobil);
 			}
 		}
 		return neobrisani;

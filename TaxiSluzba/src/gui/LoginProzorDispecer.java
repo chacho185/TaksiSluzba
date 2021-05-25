@@ -15,9 +15,8 @@ import radSaFajlovima.RadSaDatotekama;
 public class LoginProzorDispecer extends JFrame {
 	
 	private JMenuBar mainMenu = new JMenuBar();
-	private JMenu rezervisiVoznju = new JMenu("Rezervisi voznju");
-	private JMenuItem putemTelefonaItem = new JMenuItem("Telefonom");
-	private JMenuItem putemMailaItem = new JMenuItem("Mailom");
+	private JMenu dodjeliVoznju = new JMenu("Dodjeli voznju vozacu");
+	
 	private JMenu dispeceriMenu = new JMenu("Dispeceri");
 	private JMenuItem dispeceriItem = new JMenuItem("Dispeceri");
 	
@@ -38,9 +37,8 @@ public class LoginProzorDispecer extends JFrame {
 	}
 	private void initMenu() {
 		setJMenuBar(mainMenu);
-		mainMenu.add(rezervisiVoznju);
-		rezervisiVoznju.add(putemTelefonaItem);
-		rezervisiVoznju.add(putemMailaItem);
+		mainMenu.add(dodjeliVoznju);
+		
 		mainMenu.add(dispeceriMenu);
 		dispeceriMenu.add(dispeceriItem);
 	}

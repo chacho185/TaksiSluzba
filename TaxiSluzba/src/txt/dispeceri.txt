@@ -1,2 +1,2 @@
 1|Njego123|jego222|Njegos|Sikimic|123333|Kneza Miroslava|0|321567|100000.0|321312|0|false
-2|Maca|maca123|Marko|Sikimic|123333|Kneza Miroslava|0|321567|100000.0|321312|0|true
+2|Maca|maca123|Marko|Sikimic|123333|Kneza Miroslava|0|321567|100000.0|321312|0|false

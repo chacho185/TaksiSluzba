@@ -24,12 +24,13 @@ public class KolekcijeTest {
 	public static void main(String[] args) {
 		
 		RadSaDatotekama rsd = new RadSaDatotekama();
+		rsd.ucitajAutomobile();
 		rsd.ucitajMusterije();
 		rsd.ucitajDispecere();
 		rsd.ucitajTaksiSluzbe();
 		rsd.ucitajVozace();
 		rsd.ucitajVoznje();
-		rsd.ucitajAutomobile();
+		
 //		ArrayList<Automobil> aa = new ArrayList<Automobil>();
 //		System.out.println("Dodavanjw automobila");
 //		Automobil automobil = new Automobil(1, ModelAutomobila.GOLF4, Proizvodjac.VOLKSWAGEN, "2004", "12-12", VrstaVozila.PUTNICKI_AUTOMOBIL);

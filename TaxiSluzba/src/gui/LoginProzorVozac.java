@@ -1,10 +1,15 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import gui.formeZaPrikaz.DispeceriProzor;
+import gui.formeZaPrikaz.VozaciProzor;
 import osobe.Vozac;
 import radSaFajlovima.RadSaDatotekama;
 
@@ -14,6 +19,9 @@ public class LoginProzorVozac extends JFrame {
 	private JMenu rezervisiVoznju = new JMenu("Rezervisi voznju");
 	private JMenuItem putemTelefonaItem = new JMenuItem("Telefonom");
 	private JMenuItem putemMailaItem = new JMenuItem("Mailom");
+	private JMenu vozaciMenu = new JMenu("Vozaci");
+	private JMenuItem vozaciItem = new JMenuItem("Vozaci");
+	
 	
 	private RadSaDatotekama rsd;
 	private Vozac prijavljeniKorisnik;
@@ -36,8 +44,20 @@ public class LoginProzorVozac extends JFrame {
 		mainMenu.add(rezervisiVoznju);
 		rezervisiVoznju.add(putemTelefonaItem);
 		rezervisiVoznju.add(putemMailaItem);
+		mainMenu.add(vozaciMenu);
+		vozaciMenu.add(vozaciItem);
 	}
 	private void initActions() {
+		
+	vozaciItem.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					VozaciProzor vp = new VozaciProzor(rsd);
+					vp.setVisible(true);
+					
+				}
+			});
 		
 	}
 

@@ -1,16 +1,22 @@
 package gui.formeZaPrikaz;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import gui.formeZaDodavanjeIIzmenu.DispeceriForma;
+import main.KolekcijeTest;
 import osobe.Dispecer;
 import radSaFajlovima.RadSaDatotekama;
 
@@ -25,6 +31,7 @@ public class DispeceriProzor extends JFrame {
 	private JTable dispeceriTabela;
 	
 	private RadSaDatotekama rsd;
+	
 	
 	public DispeceriProzor(RadSaDatotekama rsd) {
 		this.rsd = rsd;
@@ -85,8 +92,44 @@ public class DispeceriProzor extends JFrame {
 	
 	private void initActions() {
 		
+		btnDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int red = dispeceriTabela.getSelectedRow();
+				if(red == -1) {
+					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli","Greska", JOptionPane.WARNING_MESSAGE);
+				} else {
+					String korisnickoIme = tableModel.getValueAt(red, 1).toString();
+					Dispecer dispecer = rsd.NadjiDispeceraPoKorisnickomImenu(korisnickoIme);
+					
+					int izbor = JOptionPane.showConfirmDialog(null, 
+							"Da li ste sigurni da zelite da obrisete dispecera?", 
+							korisnickoIme + " - Porvrda brisanja", JOptionPane.YES_NO_OPTION);
+					if(izbor == JOptionPane.YES_OPTION) {
+						dispecer.setObrisan(true);
+						tableModel.removeRow(red);
+						rsd.upisiDispecere(RadSaDatotekama.dispeceri);
+					
+					}
+				}
+				}
+				
+			
+		});
+		
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				DispeceriForma df = new DispeceriForma(rsd, null);
+				df.setVisible(true);
+			}
+		});
+		
 	}
 	
 }
+
 
 
