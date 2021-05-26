@@ -128,7 +128,7 @@ public class RadSaDatotekama {
 						String adresa = lineSplit[6];
 						Pol pol = Pol.values()[Integer.parseInt(lineSplit[7])];
 						String brTel = lineSplit[8];
-						int plata = Integer.parseInt(lineSplit[9]);
+						double plata = Double.parseDouble(lineSplit[9]);
 						String brojClanskeKarte = lineSplit[10];
 						int idd = Integer.parseInt(lineSplit[11]);
 						Automobil automobil = nadjiAutomobil(idd);

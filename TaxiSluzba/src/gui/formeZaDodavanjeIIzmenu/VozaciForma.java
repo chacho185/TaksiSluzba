@@ -129,7 +129,7 @@ private void initActions() {
 						String adresa = txtAdresa.getText().trim();
 						Pol pol = (Pol)cbPol.getSelectedItem();
 						String brojTelefona = txtBrTel.getText().trim();
-						int plata = Integer.parseInt(txtPlata.getText().trim());
+						double plata = Double.parseDouble(txtPlata.getText().trim());
 						String brojClanskeKarte = txtbrojClanskeKarte.getText().trim();
 						String auto = cbAutomobil.getSelectedItem().toString();
 						int IdAuta = Integer.parseInt(auto);
@@ -258,7 +258,7 @@ private void initActions() {
 				ok = false;
 			}else {
 				try {
-				Integer.parseInt(txtPlata.getText().trim());
+				Double.parseDouble(txtPlata.getText().trim());
 				}catch (NumberFormatException e) {
 					poruka += "- Plata mora biti unesena kao numericka vrijednost\n";
 					ok = false;
