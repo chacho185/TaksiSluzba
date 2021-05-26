@@ -25,8 +25,9 @@ public class KolekcijeTest {
 		
 		RadSaDatotekama rsd = new RadSaDatotekama();
 		rsd.ucitajAutomobile();
-		rsd.ucitajMusterije();
 		rsd.ucitajDispecere();
+		rsd.ucitajMusterije();
+		
 		rsd.ucitajTaksiSluzbe();
 		rsd.ucitajVozace();
 		rsd.ucitajVoznje();

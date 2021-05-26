@@ -35,6 +35,10 @@ public class RadSaDatotekama {
 	public static ArrayList<Korisnik> korisnici = new ArrayList<Korisnik>();
 	public static ArrayList<TaksiSluzba> taksiSluzbe = new ArrayList<TaksiSluzba>();
 	
+	public void dodajDispecera(Dispecer dispecer) {
+		RadSaDatotekama.dispeceri.add(dispecer);
+	}
+	
 	public static ArrayList<Dispecer> ucitajDispecere() {
 		
 		
@@ -347,6 +351,7 @@ public class RadSaDatotekama {
 		return null;
 	}
 	
+	
 public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		
 		try {
@@ -452,6 +457,23 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 			}
 		}
 		return neobrisani;
+	}
+	
+	public Dispecer NadjiDispecera(int id) {
+		for(Dispecer d : this.dispeceri) {
+			if (d.getId() == id) {
+				return d;
+			}
+		}
+		return null;
+	}
+	public Korisnik NadjiKorisnikaPoKorisnickomImenu(String korisnickoIme) {
+		for(Korisnik a : this.korisnici) {
+			if (a.getKorIme().equalsIgnoreCase(korisnickoIme)) {
+				return a;
+			}
+		}
+		return null;
 	}
 	
 	
