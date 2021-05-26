@@ -1,16 +1,20 @@
 package gui.formeZaPrikaz;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import gui.formeZaDodavanjeIIzmenu.VozaciForma;
 import osobe.Vozac;
 import radSaFajlovima.RadSaDatotekama;
 import taxiSluzba.Automobil;
@@ -87,8 +91,70 @@ public class VozaciProzor extends JFrame {
 	
 	private void initActions() {
 		
-	}
-
+		btnDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int red = vozaciTabela.getSelectedRow();
+				if(red == -1) {
+					JOptionPane.showMessageDialog(null, "Morate prvo da odaberete red u tabeli", "Greska", JOptionPane.WARNING_MESSAGE);
+					
+				}
+				else {
+					String korisnickoIme = tableModel.getValueAt(red, 1).toString();
+					Vozac vozac = rsd.NadjiVozacaPoKorisnickomImenu(korisnickoIme);
+					
+					int izbor = JOptionPane.showConfirmDialog(null, 
+							"Da li ste sigurni da zelite da obrisete vozaca?", 
+							korisnickoIme + " - Potvrda brisanja", JOptionPane.YES_NO_OPTION);
+					if(izbor == JOptionPane.YES_OPTION) {
+						vozac.setObrisan(true);
+						tableModel.removeRow(red);
+						rsd.upisiVozace(RadSaDatotekama.vozaci);
+					}
+				}
+				
+			}
+		});
+		
+		btnAdd.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VozaciForma vf = new VozaciForma(rsd, null);
+				vf.setVisible(true);
+				
+			}
+		});
+		
+		
+		btnEdit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int red = vozaciTabela.getSelectedRow();
+				if(red == -1) {
+					JOptionPane.showMessageDialog(null, "Morate odabrati jedan red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
+				}else {
+					String korisnickoIme = tableModel.getValueAt(red, 1).toString();
+					Vozac vozac = rsd.NadjiVozacaPoKorisnickomImenu(korisnickoIme);
+					if(vozac == null) {
+						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja vozaca sa tim korisnickim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
+					}else {
+						VozaciForma vf = new VozaciForma(rsd, vozac);
+						vf.setVisible(true);
+					}
+				}
+			}
+		});
+	
 }
+	}
+	
+		
+
+
 
 

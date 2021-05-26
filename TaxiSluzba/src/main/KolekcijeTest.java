@@ -24,10 +24,9 @@ public class KolekcijeTest {
 	public static void main(String[] args) {
 		
 		RadSaDatotekama rsd = new RadSaDatotekama();
-		rsd.ucitajAutomobile();
-		rsd.ucitajDispecere();
+		rsd.ucitajAutomobile();	
 		rsd.ucitajMusterije();
-		
+		rsd.ucitajDispecere();
 		rsd.ucitajTaksiSluzbe();
 		rsd.ucitajVozace();
 		rsd.ucitajVoznje();

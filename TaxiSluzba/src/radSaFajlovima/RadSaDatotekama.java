@@ -38,6 +38,9 @@ public class RadSaDatotekama {
 	public void dodajDispecera(Dispecer dispecer) {
 		RadSaDatotekama.dispeceri.add(dispecer);
 	}
+	public void dodajVozaca(Vozac vozac) {
+		RadSaDatotekama.vozaci.add(vozac);
+	}
 	
 	public static ArrayList<Dispecer> ucitajDispecere() {
 		
@@ -355,7 +358,7 @@ public class RadSaDatotekama {
 public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		
 		try {
-			File file = new File("src/files/vozaci.txt");
+			File file = new File("src/txt/vozaci.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 			String sadrzaj = "";
 			for (Vozac vozac : vozaci) {
@@ -471,6 +474,31 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		for(Korisnik a : this.korisnici) {
 			if (a.getKorIme().equalsIgnoreCase(korisnickoIme)) {
 				return a;
+			}
+		}
+		return null;
+	}
+	
+	public Vozac NadjiVozacaPoKorisnickomImenu(String korisnickoIme) {
+		for(Vozac a : this.vozaci) {
+			if (a.getKorIme().equalsIgnoreCase(korisnickoIme)) {
+				return a;
+			}
+		}
+		return null;
+	}
+	public Automobil NadjiAutomobil(int id) {
+		for(Automobil a : this.automobili) {
+			if (a.getId() == id) {
+				return a;
+			}
+		}
+		return null;
+	}
+	public Vozac NadjiVozaca(int id) {
+		for(Vozac v : this.vozaci) {
+			if (v.getId() == id) {
+				return v;
 			}
 		}
 		return null;
