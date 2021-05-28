@@ -1,7 +1,9 @@
 package gui.formeZaDodavanjeIIzmenu;
 
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,6 +19,7 @@ import osobe.Korisnik;
 import osobe.Vozac;
 import radSaFajlovima.RadSaDatotekama;
 import taxiSluzba.Automobil;
+import taxiSluzba.Voznja;
 
 public class VozaciForma extends JFrame {
 	
@@ -136,7 +139,7 @@ private void initActions() {
 						Automobil automobil = rsd.NadjiAutomobil(IdAuta);
 						
 						if(vozac == null) { 
-							Vozac novi = new Vozac(id, korisnickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, plata, brojClanskeKarte, automobil, false);
+							Vozac novi = new Vozac(id, korisnickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, false, plata, brojClanskeKarte, automobil, new ArrayList<Voznja>());
 							rsd.dodajVozaca(novi);
 						
 						}else { 

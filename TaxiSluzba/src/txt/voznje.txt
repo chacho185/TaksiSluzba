@@ -1,1 +1,5 @@
-1|datum|vrijeme|adresa|destinacija|2|1|155000|150|KREIRANA|TELEFON
+1|datum|vrijeme|adresa1|destinacija1|2|1|155000|150|KREIRANA|TELEFON|false
+2|datum|vrijeme|adresa2|destinacija2|3|2|155000|150|KREIRANA|TELEFON|false
+3|datum|vrijeme|adresa3|destinacija3|1|1|155000|150|KREIRANA|TELEFON|true
+4|datum|vrijeme|adresa4|destinacija4|1|1|155000|150|KREIRANA|TELEFON|false
+5|datum|vrijeme|adresa5|adrsa|3|4|23|23|KREIRANA|TELEFON|false

@@ -133,7 +133,8 @@ public class RadSaDatotekama {
 						int idd = Integer.parseInt(lineSplit[11]);
 						Automobil automobil = nadjiAutomobil(idd);
 						Boolean obrisan = Boolean.parseBoolean(lineSplit[12]);
-						Vozac vozac = new Vozac(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel, plata, brojClanskeKarte, automobil, obrisan);
+						ArrayList<Voznja> voznje = new ArrayList<Voznja>();
+						Vozac vozac = new Vozac(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel, obrisan, plata, brojClanskeKarte, automobil, voznje);
 						vozaci.add(vozac);
 						korisnici.add(vozac);
 					}
@@ -277,7 +278,8 @@ public class RadSaDatotekama {
 				sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" + voznja.getVremePorudzbine() + "|" 
 						+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|" + voznja.getMusterija().getId() + "|" 
 						+ voznja.getVozac().getId() + "|" + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" 
-						+ voznja.getStatus() + "|" + voznja.getPorucivanjeVoznje() + "\n";
+						+ voznja.getStatus() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+		
 				
 			}
 			
@@ -315,7 +317,8 @@ public class RadSaDatotekama {
 						StatusVoznje status = StatusVoznje.valueOf(statusVoznje);
 						String porucivanjeVoznjestr = lineSplit[10];
 						PorucivanjeVoznje porucivanjeVoznje = PorucivanjeVoznje.valueOf(porucivanjeVoznjestr);
-						Voznja voznja = new Voznja(id, datum, vremePorudzbine, adresaPolaska, adresaDestinacije, musterija, vozac, brPredjenihKilometara, trajanjeVoznje, status, porucivanjeVoznje);
+						Boolean obrisan = Boolean.parseBoolean(lineSplit[11]);
+						Voznja voznja = new Voznja(id, datum, vremePorudzbine, adresaPolaska, adresaDestinacije, musterija, vozac, brPredjenihKilometara, trajanjeVoznje, status, porucivanjeVoznje,obrisan);
 						voznje.add(voznja);
 						
 					}
@@ -499,6 +502,64 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 		for(Vozac v : this.vozaci) {
 			if (v.getId() == id) {
 				return v;
+			}
+		}
+		return null;
+	}
+	
+	public Musterija NadjiMusteriju(int id) {
+		for(Musterija m : this.musterije) {
+			if (m.getId() == id) {
+				return m;
+			}
+		}
+		return null;
+	}
+	
+	public Musterija NadjiMusterijuPoKorisnickomImenu(String korisnickoIme) {
+		for(Musterija m : this.musterije) {
+			if (m.getKorIme().equalsIgnoreCase(korisnickoIme)) {
+				return m;
+			}
+		}
+		return null;
+	}
+	public ArrayList<Musterija> getMusterije() {
+		return musterije;
+	}
+	public ArrayList<Vozac> getVozaci() {
+		return vozaci;
+	}
+
+	
+	public ArrayList<Voznja> sveNeobrisaneVoznje() {
+		ArrayList<Voznja> neobrisane = new ArrayList<Voznja>();
+		for (Voznja voznja : voznje) {
+			if(!voznja.isObrisan()) {
+				neobrisane.add(voznja);
+			}
+		}
+		return neobrisane;
+	}
+	
+	public Voznja pronadjiVoznju(String adresaDestinacije) {
+			for(Voznja voznja : voznje) {
+				//System.out.println("rodjo" + voznja);
+				if(voznja.getAdresaDestinacije().equalsIgnoreCase(adresaDestinacije)) {
+					return voznja;
+				}
+			}
+		
+		return null;
+	}
+	public void dodajVoznju(Voznja voznja) {
+		this.voznje.add(voznja);
+	}
+	
+	public Voznja NadjiVoznju(int id) {
+		for(Voznja a : this.voznje) {
+			if (a.getId() == id) {
+				return a;
 			}
 		}
 		return null;

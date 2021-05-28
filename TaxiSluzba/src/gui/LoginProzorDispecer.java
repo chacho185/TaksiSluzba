@@ -9,6 +9,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import gui.formeZaPrikaz.DispeceriProzor;
+import gui.formeZaPrikaz.VoznjeProzor;
 import osobe.Dispecer;
 import radSaFajlovima.RadSaDatotekama;
 
@@ -19,6 +20,8 @@ public class LoginProzorDispecer extends JFrame {
 	
 	private JMenu dispeceriMenu = new JMenu("Dispeceri");
 	private JMenuItem dispeceriItem = new JMenuItem("Dispeceri");
+	private JMenu voznjeMenu = new JMenu("Voznje");
+	private JMenuItem voznjeItem = new JMenuItem("Prikazi voznje");
 	
 	private RadSaDatotekama rsd;
 	private Dispecer prijavljeniKorisnik;
@@ -38,7 +41,8 @@ public class LoginProzorDispecer extends JFrame {
 	private void initMenu() {
 		setJMenuBar(mainMenu);
 		mainMenu.add(dodjeliVoznju);
-		
+		mainMenu.add(voznjeMenu);
+		voznjeMenu.add(voznjeItem);
 		mainMenu.add(dispeceriMenu);
 		dispeceriMenu.add(dispeceriItem);
 	}
@@ -54,6 +58,17 @@ public class LoginProzorDispecer extends JFrame {
 				
 			}
 		});
+		
+		voznjeItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VoznjeProzor vp = new VoznjeProzor(rsd);
+				vp.setVisible(true);
+				
+			}
+		});
+			
 			
 		}
 

@@ -1,13 +1,17 @@
 package osobe;
 
+import java.util.ArrayList;
+
 import enumeracija.Pol;
 import taxiSluzba.Automobil;
+import taxiSluzba.Voznja;
 
 public class Vozac extends Korisnik {
 	
 	private double plata;
 	private String brojClanskeKarte;
 	private Automobil automobil;
+	private ArrayList<Voznja> voznje;
 	
 	
 	public Vozac() {
@@ -15,19 +19,25 @@ public class Vozac extends Korisnik {
 		this.plata = 0;
 		this.brojClanskeKarte = "";
 		this.automobil = new Automobil();
+		this.voznje = new ArrayList<Voznja>();
 		
 		
 	}
 
 	
-
 	public Vozac(int id, String korIme, String lozinka, String ime, String prezime, String jMBG, String adresa, Pol pol,
-			String brTel, double plata, String brojClanskeKarte, Automobil automobil, boolean obrisan) {
+			String brTel, boolean obrisan, double plata, String brojClanskeKarte, Automobil automobil,
+			ArrayList<Voznja> voznje) {
 		super(id, korIme, lozinka, ime, prezime, jMBG, adresa, pol, brTel, obrisan);
 		this.plata = plata;
 		this.brojClanskeKarte = brojClanskeKarte;
 		this.automobil = automobil;
+		this.voznje = voznje;
 	}
+
+
+
+
 
 
 
@@ -54,16 +64,34 @@ public class Vozac extends Korisnik {
 	public void setAutomobil(Automobil automobil) {
 		this.automobil = automobil;
 	}
+	
+	public ArrayList<Voznja> getVoznje() {
+		return voznje;
+	}
+
+
+
+	public void setVoznje(ArrayList<Voznja> voznje) {
+		this.voznje = voznje;
+	}
+
+
+
+
 
 
 
 	@Override
 	public String toString() {
-		return "Vozac [plata=" + plata + ", brojClanskeKarte=" + brojClanskeKarte + ", automobil=" + automobil + ", id="
-				+ id + ", korIme=" + korIme + ", lozinka=" + lozinka + ", ime=" + ime + ", prezime=" + prezime
-				+ ", jMBG=" + jMBG + ", adresa=" + adresa + ", pol=" + pol + ", brTel=" + brTel + ", obrisan=" + obrisan
-				+ "]";
+		return "Vozac [plata=" + plata + ", brojClanskeKarte=" + brojClanskeKarte + ", automobil=" + automobil
+				+ ", voznje=" + voznje + ", id=" + id + ", korIme=" + korIme + ", lozinka=" + lozinka + ", ime=" + ime
+				+ ", prezime=" + prezime + ", jMBG=" + jMBG + ", adresa=" + adresa + ", pol=" + pol + ", brTel=" + brTel
+				+ ", obrisan=" + obrisan + "]";
 	}
+
+
+
+	
 
 
 }

@@ -18,6 +18,7 @@ public class Voznja {
 	private int trajanjeVoznje;
 	private StatusVoznje status;
 	private PorucivanjeVoznje porucivanjeVoznje;
+	private boolean obrisan;
 	
 	
 	
@@ -32,14 +33,15 @@ public class Voznja {
 		this.brojPredjenihKilometara = 0;
 		this.trajanjeVoznje = 0;
 		this.status = status.KREIRANA;
-		this.porucivanjeVoznje = porucivanjeVoznje.APLIKACIJA;
+		this.porucivanjeVoznje = porucivanjeVoznje.TELEFON;
+		this.obrisan = false;
 		
 	}
 
 
 	public Voznja(int id, String datum, String vremePorudzbine, String adresaPolaska, String adresaDestinacije,
 			Musterija musterija, Vozac vozac, int brojPredjenihKilometara, int trajanjeVoznje,
-			StatusVoznje status,PorucivanjeVoznje porucivanjeVoznje) {
+			StatusVoznje status,PorucivanjeVoznje porucivanjeVoznje,boolean obrisan) {
 		super();
 		this.id = id;
 		this.datum = datum;
@@ -52,12 +54,9 @@ public class Voznja {
 		this.trajanjeVoznje = trajanjeVoznje;
 		this.status = status;
 		this.porucivanjeVoznje = porucivanjeVoznje;
+		this.obrisan = obrisan;
 		
 	}
-
-
-	
-
 
 	
 
@@ -66,10 +65,8 @@ public class Voznja {
 		return "Voznja [id=" + id + ", datum=" + datum + ", vremePorudzbine=" + vremePorudzbine + ", adresaPolaska="
 				+ adresaPolaska + ", adresaDestinacije=" + adresaDestinacije + ", musterija=" + musterija + ", vozac="
 				+ vozac + ", brojPredjenihKilometara=" + brojPredjenihKilometara + ", trajanjeVoznje=" + trajanjeVoznje
-				+ ", status=" + status + ", porucivanjeVoznje=" + porucivanjeVoznje + "]";
+				+ ", status=" + status + ", porucivanjeVoznje=" + porucivanjeVoznje + ", obrisan=" + obrisan + "]";
 	}
-	
-	
 
 
 	public PorucivanjeVoznje getPorucivanjeVoznje() {
@@ -150,8 +147,6 @@ public class Voznja {
 	public void setVozac(Vozac vozac) {
 		this.vozac = vozac;
 	}
-
-
 	
 
 
@@ -163,6 +158,7 @@ public class Voznja {
 	public void setBrojPredjenihKilometara(int brojPredjenihKilometara) {
 		this.brojPredjenihKilometara = brojPredjenihKilometara;
 	}
+	
 
 
 	public int getTrajanjeVoznje() {
@@ -183,6 +179,18 @@ public class Voznja {
 	public void setStatus(StatusVoznje status) {
 		this.status = status;
 	}
+
+
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
+	}
+	
+	
 
 
 
