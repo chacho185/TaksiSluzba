@@ -182,7 +182,7 @@ private void initActions() {
 private boolean validacija() {
 		
 		boolean ok = true;
-		String poruka = "Popravite  greske u unosu u data polja:\n";
+		String poruka = "Molimo,popravite  greske u unosu u data polja:\n";
 		
 		if(txtId.getText().trim().equals("")) {
 			poruka += "- Unesite Id\n";

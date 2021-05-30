@@ -70,8 +70,8 @@ public class VoznjeProzor extends JFrame {
 			sadrzaj[i][2] = voznja.getVremePorudzbine();
 			sadrzaj[i][3] = voznja.getAdresaPolaska();
 			sadrzaj[i][4] = voznja.getAdresaDestinacije();
-			sadrzaj[i][5] = musterija.isObrisan() ? "Musterija obrisana" : musterija.getId();
-			sadrzaj[i][6] = vozac.isObrisan() ? "Vozac obrisan" : vozac.getId();
+			sadrzaj[i][5] = musterija.isObrisan() ? "Musterija ne postoji(obrisana)" : musterija.getId();
+			sadrzaj[i][6] = vozac.isObrisan() ? "Vozac ne postoji(obrisan)" : vozac.getId();
 			sadrzaj[i][7] = voznja.getBrojPredjenihKilometara();
 			sadrzaj[i][8] = voznja.getTrajanjeVoznje();
 			sadrzaj[i][9] = voznja.getStatus();
@@ -109,7 +109,7 @@ public class VoznjeProzor extends JFrame {
 					 String adresaDestinacije = tableModel.getValueAt(red , 4).toString();
 					 Voznja voznja = rsd.pronadjiVoznju(adresaDestinacije);
 					 System.out.println("Voznja " + adresaDestinacije);
-					 int odabir = JOptionPane.showConfirmDialog(null, "Rodjo,jesi ti siguran da zelis obrisat voznju", adresaDestinacije + "- Potvrda brisanja", JOptionPane.YES_NO_OPTION);
+					 int odabir = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da obrisete voznju?", adresaDestinacije + "- Potvrda brisanja", JOptionPane.YES_NO_OPTION);
 					 if (odabir == JOptionPane.YES_NO_OPTION) {
 						 voznja.setObrisan(true);
 						 tableModel.removeRow(red);

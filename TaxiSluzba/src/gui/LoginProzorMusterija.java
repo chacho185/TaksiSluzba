@@ -12,8 +12,8 @@ public class LoginProzorMusterija extends JFrame {
 	
 	private JMenuBar mainMenu = new JMenuBar();
 	private JMenu rezervisiVoznju = new JMenu("Rezervisi voznju");
-	private JMenuItem putemTelefonaItem = new JMenuItem("Telefonom");
-	private JMenuItem putemMailaItem = new JMenuItem("Mailom");
+	private JMenuItem TelefonomItem = new JMenuItem("Telefonom");
+	private JMenuItem putemAplikacijeItem = new JMenuItem("Putem aplikacije");
 	
 	private RadSaDatotekama rsd;
 	private Musterija prijavljeniKorisnik;
@@ -33,8 +33,8 @@ public class LoginProzorMusterija extends JFrame {
 	private void initMenu() {
 		setJMenuBar(mainMenu);
 		mainMenu.add(rezervisiVoznju);
-		rezervisiVoznju.add(putemTelefonaItem);
-		rezervisiVoznju.add(putemMailaItem);
+		rezervisiVoznju.add(TelefonomItem);
+		rezervisiVoznju.add(putemAplikacijeItem);
 	}
 	
 	private void initActions() {
