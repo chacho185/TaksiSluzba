@@ -19,8 +19,7 @@ public class LoginProzorVozac extends JFrame {
 	private JMenu rezervisiVoznju = new JMenu("Rezervisi voznju");
 	private JMenuItem putemTelefonaItem = new JMenuItem("Telefonom");
 	private JMenuItem putemMailaItem = new JMenuItem("Mailom");
-	private JMenu vozaciMenu = new JMenu("Vozaci");
-	private JMenuItem vozaciItem = new JMenuItem("Vozaci");
+	
 	
 	
 	private RadSaDatotekama rsd;
@@ -44,20 +43,11 @@ public class LoginProzorVozac extends JFrame {
 		mainMenu.add(rezervisiVoznju);
 		rezervisiVoznju.add(putemTelefonaItem);
 		rezervisiVoznju.add(putemMailaItem);
-		mainMenu.add(vozaciMenu);
-		vozaciMenu.add(vozaciItem);
+	
 	}
 	private void initActions() {
 		
-	vozaciItem.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					VozaciProzor vp = new VozaciProzor(rsd);
-					vp.setVisible(true);
-					
-				}
-			});
+	
 		
 	}
 

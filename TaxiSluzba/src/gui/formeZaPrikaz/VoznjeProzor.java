@@ -167,8 +167,8 @@ public class VoznjeProzor extends JFrame {
 					if(voznja == null || voznja.getStatus() != StatusVoznje.KREIRANA) {
 						JOptionPane.showMessageDialog(null, "Ova voznja je vec zauzeta,odaberi drugu.", "Greska", JOptionPane.WARNING_MESSAGE);
 					}else {
-						DodjelaVoznjeProzor voznjef = new DodjelaVoznjeProzor(rsd, voznja);
-						voznjef.setVisible(true);
+						DodjelaVoznjeProzor voznjep = new DodjelaVoznjeProzor(rsd, voznja);
+						voznjep.setVisible(true);
 					}
 				}
 				
