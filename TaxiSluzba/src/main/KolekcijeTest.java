@@ -31,6 +31,7 @@ public class KolekcijeTest {
 		rsd.ucitajVozace();
 		rsd.ucitajVoznje();
 		
+		
 //		ArrayList<Automobil> aa = new ArrayList<Automobil>();
 //		System.out.println("Dodavanjw automobila");
 //		Automobil automobil = new Automobil(1, ModelAutomobila.GOLF4, Proizvodjac.VOLKSWAGEN, "2004", "12-12", VrstaVozila.PUTNICKI_AUTOMOBIL);

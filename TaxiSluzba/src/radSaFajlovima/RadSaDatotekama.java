@@ -266,6 +266,154 @@ public class RadSaDatotekama {
 			
 			return musterije;
 		}
+	
+	public static ArrayList<Voznja> ucitajVoznje() {
+		
+		
+		try {
+			
+			File file = new File("src/txt/voznje.txt");
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while((line = reader.readLine()) !=null) {
+				String[] lineSplit = line.split("\\|");
+				if(Integer.parseInt(lineSplit[9]) == 3) {
+					
+					
+				int id = Integer.parseInt(lineSplit[0]);
+				String datum = lineSplit[1];
+				String vremePorudzbine = lineSplit[2];
+				String adresaPolaska = lineSplit[3];
+				String adresaDestinacije = lineSplit[4];
+				Musterija musterija = nadjiMusteriju(Integer.parseInt(lineSplit[5]));
+				Vozac vozac = nadjiVozaca(Integer.parseInt(lineSplit[6]));
+				
+				int brPredjenihKilometara = Integer.parseInt(lineSplit[7]);
+				int trajanjeVoznje = Integer.parseInt(lineSplit[8]);
+				StatusVoznje status = StatusVoznje.values()[Integer.parseInt(lineSplit[9])];
+
+				PorucivanjeVoznje porucivanjeVoznje = PorucivanjeVoznje.values()[Integer.parseInt(lineSplit[10])];
+				Boolean obrisan = Boolean.parseBoolean(lineSplit[11]);
+				Voznja voznja = new Voznja(id, datum, vremePorudzbine, adresaPolaska, adresaDestinacije, musterija, vozac, brPredjenihKilometara, trajanjeVoznje, status, porucivanjeVoznje,obrisan);
+				vozac.getVoznje().add(voznja);
+				voznje.add(voznja);
+				
+				
+				
+			} 
+				else if(Integer.parseInt(lineSplit[9]) == 0) {
+					int id = Integer.parseInt(lineSplit[0]);
+					String datum = lineSplit[1];
+					String vremePorudzbine = lineSplit[2];
+					String adresaPolaska = lineSplit[3];
+					String adresaDestinacije = lineSplit[4];
+					Musterija musterija = nadjiMusteriju(Integer.parseInt(lineSplit[5]));
+					StatusVoznje status = StatusVoznje.values()[Integer.parseInt(lineSplit[9])];
+					Boolean obrisan = Boolean.parseBoolean(lineSplit[11]);
+					Voznja voznja = new Voznja();
+					voznja.setId(id);
+					voznja.setDatum(datum);
+					voznja.setVremePorudzbine(vremePorudzbine);
+					voznja.setAdresaPolaska(adresaPolaska);
+					voznja.setAdresaDestinacije(adresaDestinacije);
+					voznja.setMusterija(musterija);
+					voznja.setStatus(status);
+					voznja.setObrisan(obrisan);
+					
+
+					voznje.add(voznja);
+				}else if (Integer.parseInt(lineSplit[9]) == 1) {
+					int id = Integer.parseInt(lineSplit[0]);
+					String datum = lineSplit[1];
+					String vremePorudzbine = lineSplit[2];
+					String adresaPolaska = lineSplit[3];
+					String adresaDestinacije = lineSplit[4];
+					Musterija musterija = nadjiMusteriju(Integer.parseInt(lineSplit[5]));
+					Vozac vozac = nadjiVozaca(Integer.parseInt(lineSplit[6]));
+					StatusVoznje status = StatusVoznje.values()[Integer.parseInt(lineSplit[9])];
+					Boolean obrisan = Boolean.parseBoolean(lineSplit[11]);
+					
+					Voznja voznja = new Voznja();
+					voznja.setId(id);
+					voznja.setDatum(datum);
+					voznja.setVremePorudzbine(vremePorudzbine);
+					voznja.setAdresaPolaska(adresaPolaska);
+					voznja.setAdresaDestinacije(adresaDestinacije);
+					voznja.setMusterija(musterija);
+					voznja.setVozac(vozac);
+					voznja.setStatus(status);
+					voznja.setObrisan(obrisan);
+					
+
+					voznje.add(voznja);
+				}else if(Integer.parseInt(lineSplit[9]) == 2) {
+					int id = Integer.parseInt(lineSplit[0]);
+					String datum = lineSplit[1];
+					String vremePorudzbine = lineSplit[2];
+					String adresaPolaska = lineSplit[3];
+					String adresaDestinacije = lineSplit[4];
+					Musterija musterija = nadjiMusteriju(Integer.parseInt(lineSplit[5]));
+					Vozac vozac = nadjiVozaca(Integer.parseInt(lineSplit[6]));
+					StatusVoznje status = StatusVoznje.values()[Integer.parseInt(lineSplit[9])];
+					Boolean obrisan = Boolean.parseBoolean(lineSplit[11]);
+					
+					Voznja voznja = new Voznja();
+					voznja.setId(id);
+					voznja.setDatum(datum);
+					voznja.setVremePorudzbine(vremePorudzbine);
+					voznja.setAdresaPolaska(adresaPolaska);
+					voznja.setAdresaDestinacije(adresaDestinacije);
+					voznja.setMusterija(musterija);
+					voznja.setVozac(vozac);
+					voznja.setStatus(status);
+					voznja.setObrisan(obrisan);
+					
+
+					voznje.add(voznja);
+				}else if(Integer.parseInt(lineSplit[9]) == 4) {
+					int id = Integer.parseInt(lineSplit[0]);
+					String datum = lineSplit[1];
+					String vremePorudzbine = lineSplit[2];
+					String adresaPolaska = lineSplit[3];
+					String adresaDestinacije = lineSplit[4];
+					Musterija musterija = nadjiMusteriju(Integer.parseInt(lineSplit[5]));
+					Vozac vozac = nadjiVozaca(Integer.parseInt(lineSplit[6]));
+					String brojPredjenihKilometara = lineSplit[7];
+					String trajanjeVoznje = lineSplit[8];
+					StatusVoznje status = StatusVoznje.values()[Integer.parseInt(lineSplit[9])];
+					PorucivanjeVoznje porucivanjeVoznje = PorucivanjeVoznje.values()[Integer.parseInt(lineSplit[10])];
+					
+					
+					Boolean obrisan = Boolean.parseBoolean(lineSplit[11]);
+					
+					Voznja voznja = new Voznja();
+					voznja.setId(id);
+					voznja.setDatum(datum);
+					voznja.setVremePorudzbine(vremePorudzbine);
+					voznja.setAdresaPolaska(adresaPolaska);
+					voznja.setAdresaDestinacije(adresaDestinacije);
+					voznja.setMusterija(musterija);
+					voznja.setVozac(vozac);
+					voznja.setBrojPredjenihKilometara(Integer.parseInt(brojPredjenihKilometara));
+					voznja.setTrajanjeVoznje(Integer.parseInt(trajanjeVoznje));
+					voznja.setStatus(status);
+					voznja.setPorucivanjeVoznje(porucivanjeVoznje);
+					voznja.setObrisan(obrisan);
+					
+
+					voznje.add(voznja);
+				}
+				
+			}	
+			
+			reader.close();
+			
+		} catch (IOException e) {
+			System.out.println("Greska prilikom citanja voznji");
+		}
+		
+		return voznje;
+}
 	public ArrayList<Voznja> upisiVoznje(ArrayList<Voznja> voznje) {
 		
 		
@@ -275,10 +423,41 @@ public class RadSaDatotekama {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 			String sadrzaj = "";
 			for (Voznja voznja : voznje) {
-				sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" + voznja.getVremePorudzbine() + "|" 
-						+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|" + voznja.getMusterija().getId() + "|" 
-						+ voznja.getVozac().getId() + "|" + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" 
-						+ voznja.getStatus() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+				if(voznja.getStatus() == StatusVoznje.ZAVRSENA) {
+					sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" + voznja.getVremePorudzbine() + "|" 
+							+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|" + voznja.getMusterija().getId() + "|" 
+							+ voznja.getVozac().getId() + "|" + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" 
+							+ voznja.getStatus() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+				}
+				else if(voznja.getStatus() == StatusVoznje.KREIRANA) {
+					sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" 
+							+ voznja.getVremePorudzbine() + "|" 
+							+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|"
+							+ String.valueOf(voznja.getMusterija().getId()) + "|" 
+							+ "--" + "|" 
+							+ "--" + "|" + "--" + "|" 
+							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+				} 
+				else if(voznja.getStatus() == StatusVoznje.DODIJELJENA) {
+					sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" 
+							+ voznja.getVremePorudzbine() + "|" 
+							+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|"
+							+ String.valueOf(voznja.getMusterija().getId()) + "|" 
+							+ String.valueOf(voznja.getVozac().getId()) + "|" 
+							+ "--" + "|" + "--" + "|" 
+							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+				}
+				else if(voznja.getStatus() == StatusVoznje.ODBIJENA) {
+					sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" 
+							+ voznja.getVremePorudzbine() + "|" 
+							+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|"
+							+ String.valueOf(voznja.getMusterija().getId()) + "|" 
+							+ String.valueOf(voznja.getVozac().getId()) + "|" 
+							+ "--" + "|" + "--" + "|" 
+							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+					
+				}
+				
 		
 				
 			}
@@ -291,45 +470,7 @@ public class RadSaDatotekama {
 		
 		return voznje;
 	}
-	public static ArrayList<Voznja> ucitajVoznje() {
-		
-				
-				try {
-					
-					File file = new File("src/txt/voznje.txt");
-					BufferedReader reader = new BufferedReader(new FileReader(file));
-					String line;
-					while((line = reader.readLine()) !=null) {
-						String[] lineSplit = line.split("\\|");
-						int id = Integer.parseInt(lineSplit[0]);
-						String datum = lineSplit[1];
-						String vremePorudzbine = lineSplit[2];
-						String adresaPolaska = lineSplit[3];
-						String adresaDestinacije = lineSplit[4];
-						int musterijaint = Integer.parseInt(lineSplit[5]);
-						Musterija musterija = nadjiMusteriju(musterijaint);
-						int vozacint = Integer.parseInt(lineSplit[6]);
-						Vozac vozac = nadjiVozaca(vozacint);
-						
-						int brPredjenihKilometara = Integer.parseInt(lineSplit[7]);
-						int trajanjeVoznje = Integer.parseInt(lineSplit[8]);
-						String statusVoznje = lineSplit[9];
-						StatusVoznje status = StatusVoznje.valueOf(statusVoznje);
-						String porucivanjeVoznjestr = lineSplit[10];
-						PorucivanjeVoznje porucivanjeVoznje = PorucivanjeVoznje.valueOf(porucivanjeVoznjestr);
-						Boolean obrisan = Boolean.parseBoolean(lineSplit[11]);
-						Voznja voznja = new Voznja(id, datum, vremePorudzbine, adresaPolaska, adresaDestinacije, musterija, vozac, brPredjenihKilometara, trajanjeVoznje, status, porucivanjeVoznje,obrisan);
-						voznje.add(voznja);
-						
-					}
-					reader.close();
-					
-				} catch (IOException e) {
-					System.out.println("Greska prilikom citanja voznji");
-				}
-				
-				return voznje;
-	}
+	
 	
 	public static Musterija nadjiMusteriju(int id) {
         for(Musterija musterija: musterije) {
@@ -530,6 +671,9 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 	public ArrayList<Vozac> getVozaci() {
 		return vozaci;
 	}
+	public ArrayList<Voznja> getVoznje() {
+		return voznje;
+	}
 
 	
 	public ArrayList<Voznja> sveNeobrisaneVoznje() {
@@ -563,14 +707,6 @@ public ArrayList<Vozac> upisiVozace(ArrayList<Vozac> vozaci) {
 			}
 		}
 		return null;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 
 }

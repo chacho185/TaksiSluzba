@@ -1,4 +1,4 @@
 1|Njegos|njego123|Njegos|Sikimic|15210521152|Alekse Santica 5|0|065424141|20000.0|12|2|false
 2|danda|danda123|Damjan|Aleksic|15210521152|Alekse Santica 5|0|065321341|1000.0|22|2|false
-3|nada|nada123|Nada|Sikimic|341242142|ljubinje 33|1|24142421|2424142.0|21|3|false
-4|nada|nada123|Nada|Sikimic|341242142|ljubinje 33|1|24142421|2424142.0|21|3|false
+3|nikola|nikola123|Nikola|Okuka|341242142|ljubinje 33|1|24142421|2424142.0|21|3|false
+4|Milovan|milovan123|Milovan|Bokic|341242142|ljubinje 33|1|24142421|2424142.0|21|3|false

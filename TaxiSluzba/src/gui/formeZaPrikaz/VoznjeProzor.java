@@ -14,6 +14,7 @@ import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import enumeracija.StatusVoznje;
 import gui.formeZaDodavanjeIIzmenu.VoznjeForma;
 import osobe.Musterija;
 import osobe.Vozac;
@@ -27,6 +28,7 @@ public class VoznjeProzor extends JFrame {
 	private JButton btnAdd = new JButton();
 	private JButton btnEdit = new JButton();
 	private JButton btnDelete = new JButton();
+	private JButton btnDodjeliVoznjuVozacu = new JButton();
 	
 	private DefaultTableModel tableModel;
 	private JTable voznjeTabela;
@@ -50,10 +52,13 @@ public class VoznjeProzor extends JFrame {
 		btnEdit.setIcon(editIcon);
 		ImageIcon removeIcon = new ImageIcon(getClass().getResource("/slike/remove.gif"));
 		btnDelete.setIcon(removeIcon);
+		ImageIcon assignIcon = new ImageIcon(getClass().getResource("/slike/assign.png"));
+		btnDodjeliVoznjuVozacu.setIcon(assignIcon);
 		
 		mainToolbar.add(btnAdd);
 		mainToolbar.add(btnEdit);
 		mainToolbar.add(btnDelete);
+		mainToolbar.add(btnDodjeliVoznjuVozacu);
 		add(mainToolbar, BorderLayout.NORTH);
 		mainToolbar.setFloatable(false);
 		
@@ -145,6 +150,28 @@ public class VoznjeProzor extends JFrame {
 						voznjef.setVisible(true);
 					}
 				}
+			}
+		});
+		
+		btnDodjeliVoznjuVozacu.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int red = voznjeTabela.getSelectedRow();
+				if(red == -1) {
+					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
+				}else {
+					int id = Integer.parseInt(tableModel.getValueAt(red, 0).toString());
+					Voznja voznja = rsd.NadjiVoznju(id);
+					if(voznja == null || voznja.getStatus() != StatusVoznje.KREIRANA) {
+						JOptionPane.showMessageDialog(null, "Ova voznja je vec zauzeta,odaberi drugu.", "Greska", JOptionPane.WARNING_MESSAGE);
+					}else {
+						DodjelaVoznjeProzor voznjef = new DodjelaVoznjeProzor(rsd, voznja);
+						voznjef.setVisible(true);
+					}
+				}
+				
 			}
 		});
 	

@@ -1,10 +1,14 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import gui.formeZaPrikaz.RezervisiVoznjuProzor;
 import osobe.Musterija;
 import radSaFajlovima.RadSaDatotekama;
 
@@ -39,6 +43,16 @@ public class LoginProzorMusterija extends JFrame {
 	
 	private void initActions() {
 		
+		TelefonomItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				RezervisiVoznjuProzor rvp = new RezervisiVoznjuProzor(rsd, prijavljeniKorisnik);
+				rvp.setVisible(true);
+				
+			}
+		});
 	}
 	
 
