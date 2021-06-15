@@ -8,22 +8,22 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import gui.formeZaPrikaz.DispeceriProzor;
 import gui.formeZaPrikaz.VozaciProzor;
+import gui.formeZaPrikaz.VoznjeProzor;
+import gui.formeZaPrikaz.VoznjeZaVozaceProzor;
 import osobe.Vozac;
+import taxiSluzba.Voznja;
 import radSaFajlovima.RadSaDatotekama;
 
 public class LoginProzorVozac extends JFrame {
-	
+
 	private JMenuBar mainMenu = new JMenuBar();
-	private JMenu rezervisiVoznju = new JMenu("Rezervisi voznju");
-	private JMenuItem putemTelefonaItem = new JMenuItem("Telefonom");
-	private JMenuItem putemMailaItem = new JMenuItem("Mailom");
-	
-	
+	private JMenu voznjeMenu = new JMenu("Voznje");
+	private JMenuItem voznjeItem = new JMenuItem("Voznje");
 	
 	private RadSaDatotekama rsd;
 	private Vozac prijavljeniKorisnik;
+	private Voznja voznja;
 	
 	public LoginProzorVozac(RadSaDatotekama rsd, Vozac prijavljeniKorisnik) {
 		this.rsd = rsd;
@@ -40,15 +40,24 @@ public class LoginProzorVozac extends JFrame {
 	
 	private void initMenu() {
 		setJMenuBar(mainMenu);
-		mainMenu.add(rezervisiVoznju);
-		rezervisiVoznju.add(putemTelefonaItem);
-		rezervisiVoznju.add(putemMailaItem);
-	
+		mainMenu.add(voznjeMenu);
+		voznjeMenu.add(voznjeItem);
 	}
+	
 	private void initActions() {
 		
-	
+		voznjeItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				VoznjeZaVozaceProzor vzvp = new VoznjeZaVozaceProzor(rsd, prijavljeniKorisnik);
+				vzvp.setVisible(true);
+				
+			}
+		});
 		
 	}
-
+	
+	
 }

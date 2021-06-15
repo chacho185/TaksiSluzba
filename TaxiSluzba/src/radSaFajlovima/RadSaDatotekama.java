@@ -427,7 +427,7 @@ public class RadSaDatotekama {
 					sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" + voznja.getVremePorudzbine() + "|" 
 							+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|" + voznja.getMusterija().getId() + "|" 
 							+ voznja.getVozac().getId() + "|" + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" 
-							+ voznja.getStatus() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje().ordinal() + "|" + voznja.isObrisan() + "\n";
 				}
 				else if(voznja.getStatus() == StatusVoznje.KREIRANA) {
 					sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" 
@@ -436,7 +436,7 @@ public class RadSaDatotekama {
 							+ String.valueOf(voznja.getMusterija().getId()) + "|" 
 							+ "--" + "|" 
 							+ "--" + "|" + "--" + "|" 
-							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje().ordinal() + "|" + voznja.isObrisan() + "\n";
 				} 
 				else if(voznja.getStatus() == StatusVoznje.DODIJELJENA) {
 					sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" 
@@ -445,7 +445,7 @@ public class RadSaDatotekama {
 							+ String.valueOf(voznja.getMusterija().getId()) + "|" 
 							+ String.valueOf(voznja.getVozac().getId()) + "|" 
 							+ "--" + "|" + "--" + "|" 
-							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje().ordinal() + "|" + voznja.isObrisan() + "\n";
 				}
 				else if(voznja.getStatus() == StatusVoznje.ODBIJENA) {
 					sadrzaj += voznja.getId() + "|" + voznja.getDatum() + "|" 
@@ -454,7 +454,7 @@ public class RadSaDatotekama {
 							+ String.valueOf(voznja.getMusterija().getId()) + "|" 
 							+ String.valueOf(voznja.getVozac().getId()) + "|" 
 							+ "--" + "|" + "--" + "|" 
-							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje() + "|" + voznja.isObrisan() + "\n";
+							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje().ordinal() + "|" + voznja.isObrisan() + "\n";
 					
 				}
 				
