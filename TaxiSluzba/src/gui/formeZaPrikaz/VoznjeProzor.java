@@ -75,8 +75,8 @@ public class VoznjeProzor extends JFrame {
 			sadrzaj[i][2] = voznja.getVremePorudzbine();
 			sadrzaj[i][3] = voznja.getAdresaPolaska();
 			sadrzaj[i][4] = voznja.getAdresaDestinacije();
-			sadrzaj[i][5] = musterija.isObrisan() ? "Musterija ne postoji(obrisana)" : musterija.getId();
-			sadrzaj[i][6] = vozac.isObrisan() ? "Vozac ne postoji(obrisan)" : vozac.getId();
+			sadrzaj[i][5] = musterija.isObrisan() ? "Musterija je obrisana" : musterija.getId();
+			sadrzaj[i][6] = vozac.isObrisan() ? "Vozac je obrisan" : vozac.getId();
 			sadrzaj[i][7] = voznja.getBrojPredjenihKilometara();
 			sadrzaj[i][8] = voznja.getTrajanjeVoznje();
 			sadrzaj[i][9] = voznja.getStatus();

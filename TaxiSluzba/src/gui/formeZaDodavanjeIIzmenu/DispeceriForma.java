@@ -163,6 +163,7 @@ private void initActions() {
 	
 	private void popuniPolja() {
 		txtId.setText(String.valueOf(dispecer.getId()));
+		txtId.setEnabled(false);
 		txtKorIme.setText(dispecer.getKorIme());
 		pfLozinka.setText(dispecer.getLozinka());
 		txtIme.setText(dispecer.getIme());

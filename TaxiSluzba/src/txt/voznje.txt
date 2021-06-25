@@ -1,5 +1,10 @@
-1|datum|vrijeme|adresa1|destinacija1|3|--|--|--|0|0|false
-2|datum|vrijeme|adresa2|destinacija2|3|3|12|7|4|0|false
-3|datum|vrijeme|adresa3|destinacija3|1|--|--|--|0|0|false
-4|datum|vrijeme|adresa4|destinacija4|1|--|--|--|0|0|false
-5|datum|vrijeme|adresa5|destiacija5|3|3|--|--|1|0|false
+6|15-08-2020|13:52:26|Ljubinjee|Bileca|1|1|50|37|4|0|false
+7|15-08-2020|13:52:26|Ljubinje|Stolac|1|2|0|0|3|0|false
+8|15-08-2020|13:52:26|Trebinje|Herceg Novi|1|1|0|0|3|0|false
+9|15-08-2020|13:52:26|Ljubinje|Trebinje|1|2|43|43|4|0|false
+11|15-08-2020|13:52:26|citluk|capljina|1|2|0|0|3|0|false
+12|15-08-2020|13:52:26|Vardusa|Ljubinje|1|3|7|5|4|0|false
+13|15-08-2020|13:52:26|Mostar|Stolac|1|2|24|15|4|0|false
+14|15-08-2020|13:52:26|Trebinje|Herceg Novi|1|2|0|0|3|0|false
+15|15-08-2020|13:52:26|ljubije|gacko|1|1|100|70|4|0|false
+16|15-08-2020|13:52:26|Ljubinje|Mrkonjici|1|2|30|22|4|0|false

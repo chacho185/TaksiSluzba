@@ -55,12 +55,12 @@ public class VoznjeZaVozaceProzor extends JFrame {
 	}
 	
 	private void initGUI() {
-		ImageIcon acceptIcon = new ImageIcon(getClass().getResource("/slike/add.gif"));
-		btnPotvrdiVoznju.setIcon(acceptIcon);
-		ImageIcon declineIcon = new ImageIcon(getClass().getResource("/slike/edit.gif"));
-		btnOdbijVoznju.setIcon(declineIcon);
-		ImageIcon finishIcon = new ImageIcon(getClass().getResource("/slike/add.gif"));
-		btnZavrsiVoznju.setIcon(finishIcon);
+		ImageIcon prihvatiIcon = new ImageIcon(getClass().getResource("/slike/icons8-approve-24.png"));
+		btnPotvrdiVoznju.setIcon(prihvatiIcon);
+		ImageIcon odbijIcon = new ImageIcon(getClass().getResource("/slike/icons8-decline-24.png"));
+		btnOdbijVoznju.setIcon(odbijIcon);
+		ImageIcon zavrsiIcon = new ImageIcon(getClass().getResource("/slike/icons8-finish-flag-24.png"));
+		btnZavrsiVoznju.setIcon(zavrsiIcon);
 		
 		mainToolbar.add(btnPotvrdiVoznju);
 		mainToolbar.add(btnOdbijVoznju);

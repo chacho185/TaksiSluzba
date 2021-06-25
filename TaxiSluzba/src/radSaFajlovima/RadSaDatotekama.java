@@ -453,7 +453,7 @@ public class RadSaDatotekama {
 							+ voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|"
 							+ String.valueOf(voznja.getMusterija().getId()) + "|" 
 							+ String.valueOf(voznja.getVozac().getId()) + "|" 
-							+ "--" + "|" + "--" + "|" 
+							+ Integer.valueOf(0) + "|" + Integer.valueOf(0) + "|" 
 							+ voznja.getStatus().ordinal() + "|" + voznja.getPorucivanjeVoznje().ordinal() + "|" + voznja.isObrisan() + "\n";
 					
 				}
